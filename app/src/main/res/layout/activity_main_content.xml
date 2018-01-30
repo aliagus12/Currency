@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.aliagushutapea.convertion.main_content.MainContentActivity">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.aliagushutapea.convertion.main_content.MainContentActivityPresenter"/>
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <include
+            android:id="@+id/include_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/app_bar_drawer"
+            bind:presenter="@{presenter}"
+            />
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation_drawer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            bind:headerLayout="@layout/navigation_header"
+            bind:menu="@menu/activity_main_menu_drawer_navigation"
+            />
+    </android.support.v4.widget.DrawerLayout>
+</layout>

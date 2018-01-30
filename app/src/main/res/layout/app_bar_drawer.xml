@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.aliagushutapea.convertion.main_content.MainContentActivityPresenter" />
+    </data>
+    <LinearLayout
+        android:id="@+id/linear_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".main_content.MainContentActivity">
+
+        <include
+            android:id="@+id/include_toolbar"
+            layout="@layout/drawer_toolbar"
+            app:presenter="@{presenter}"/>
+
+        <include
+            android:id="@+id/include_content"
+            layout="@layout/content_drawer"
+            app:presenter="@{presenter}"/>
+
+    </LinearLayout>
+</layout>

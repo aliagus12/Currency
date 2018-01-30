@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.aliagushutapea.convertion.main_content.MainContentActivityPresenter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_layout_container_activity_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".main_content.MainContentActivity">
+
+        <FrameLayout
+            android:id="@+id/frame_layout_content_activity_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation_view_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="#323232"
+            app:itemIconTint="@drawable/background_item_bottom_navigation_view"
+            app:itemTextColor="@drawable/background_item_bottom_navigation_view"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:menu="@menu/botton_navigation_menu" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addMoney"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="@{(view) -> presenter.addCurrency()}"
+            android:src="@drawable/ic_add_white_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view_drawer"
+            app:layout_constraintRight_toLeftOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainContainerAddCurrency"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/relatifLayoutAddImagePathCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:elevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageAddCurrency"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_image_black_24dp" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageAddCountry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:layout_weight="2"
+                android:padding="10dp"
+                android:src="@drawable/ic_image_black_24dp" />
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingAddImageCurrency"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_add_white_24dp" />
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/addIdCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Currency Id"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/relatifLayoutAddImagePathCurrency" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/addNameCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Currency Name"
+        app:layout_constraintTop_toBottomOf="@+id/addIdCurrency" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/addCountryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Country Name"
+        app:layout_constraintTop_toBottomOf="@+id/addNameCurrency" />
+
+    <!--<EditText
+        android:id="@+id/addValueCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Currency Value"
+        app:layout_constraintTop_toBottomOf="@+id/addCountryCurrency" />-->
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnOkAddCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:text="Ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCountryName" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnCancelAddCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCountryName" />
+
+</android.support.constraint.ConstraintLayout>

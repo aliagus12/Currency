@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/botton_navigation_money_exchange"
+        android:icon="@drawable/ic_attach_money_grey_24dp"
+        android:title="@string/money_changer"
+        />
+
+    <item
+        android:id="@+id/botton_navigation_temperature_exchange"
+        android:icon="@drawable/ic_camera_rear_black_24dp"
+        android:title="@string/temperature_changer" />
+
+</menu>

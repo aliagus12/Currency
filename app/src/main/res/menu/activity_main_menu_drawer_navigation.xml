@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_navigation_drawer_money"
+        android:icon="@drawable/ic_attach_money_grey_24dp"
+        android:title="@string/money_changer" />
+    <item
+        android:id="@+id/menu_navigation_drawer_temperature"
+        android:icon="@drawable/ic_camera_rear_black_24dp"
+        android:title="@string/temperature_changer" />
+
+    <item
+        android:id="@+id/menu_navigation_drawer_add_table"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:title="@string/add_table"/>
+
+    <item
+        android:id="@+id/menu_navigation_drawer_show_all_table"
+        android:icon="@drawable/ic_lock_open_black_24dp"
+        android:title="@string/show_all_table"/>
+</menu>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.aliagushutapea.convertion.main_content.MainContentActivityPresenter"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/default_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#910fde65"
+            app:popupTheme="@style/AppThemeToolbar"
+            app:subtitleTextAppearance="@style/ToolbarSubtitleAppearance"
+            app:theme="@style/AppThemeToolbar"
+            app:titleTextAppearance="@style/ToolbarTitleAppearance"
+            tools:targetApi="lollipop"
+            android:onClick="@{(view) -> presenter.goToInpectionDatabase()}"/>
+    </RelativeLayout>
+</layout>
