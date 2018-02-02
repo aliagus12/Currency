@@ -1,6 +1,6 @@
 package com.aliagushutapea.convertion.dependencyinjection.component_mpv;
 
-import com.aliagushutapea.convertion.add_currency.AddCurrencyFragment;
+import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragment;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.AddCurrencyFragmentModule;
 
 import dagger.Component;
@@ -12,5 +12,5 @@ import dagger.Component;
         modules = AddCurrencyFragmentModule.class)
 public interface AddCurrencyFragmentComponent {
 
-    void inject(AddCurrencyFragment addCurrencyFragment);
+    void inject(DetailCurrencyFragment detailCurrencyFragment);
 }

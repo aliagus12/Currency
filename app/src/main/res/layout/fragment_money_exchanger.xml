@@ -41,12 +41,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <ImageView
                         android:id="@+id/imageMoneyTarget"
                         android:layout_width="75dp"
                         android:layout_height="match_parent"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_broken_image_grey_24dp"
+                        android:background="@drawable/background_edit_text_rounded"
                         android:onClick="@{presenter::showListCurrency}"
                         />
 
@@ -74,6 +78,8 @@
                     android:layout_height="?attr/actionBarSize"
                     android:gravity="center"
                     android:hint="@string/example"
+                    android:inputType="number"
+                    android:background="@drawable/background_edit_text_rounded"
                     android:id="@+id/edtTargetCurrency"
                     />
 
@@ -90,12 +96,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="5dp">
 
                     <ImageView
                         android:id="@+id/imageMoneyResult"
                         android:layout_width="75dp"
                         android:layout_height="match_parent"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_broken_image_grey_24dp"
+                        android:background="@drawable/background_edit_text_rounded"
                         android:onClick="@{presenter::showListCurrency}"
                         />
 
@@ -120,6 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:textStyle="bold"
+                    android:background="@drawable/background_edit_text_rounded"
                     android:id="@+id/txtCurrencyResult"
                     android:hint="@string/example_result"
                     android:textColor="@color/black"

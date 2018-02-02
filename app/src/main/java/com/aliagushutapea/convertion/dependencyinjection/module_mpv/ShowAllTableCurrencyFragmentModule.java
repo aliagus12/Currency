@@ -1,6 +1,6 @@
 package com.aliagushutapea.convertion.dependencyinjection.module_mpv;
 
-import com.aliagushutapea.convertion.show_all_table.ShowAllTableCurrencyFragmentContract;
+import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragmentContract;
 
 import dagger.Module;
 import dagger.Provides;
@@ -10,14 +10,14 @@ import dagger.Provides;
  */
 @Module
 public class ShowAllTableCurrencyFragmentModule {
-    private ShowAllTableCurrencyFragmentContract.View view;
+    private ShowAllListCurrencyFragmentContract.View view;
 
-    public ShowAllTableCurrencyFragmentModule(ShowAllTableCurrencyFragmentContract.View view) {
+    public ShowAllTableCurrencyFragmentModule(ShowAllListCurrencyFragmentContract.View view) {
         this.view = view;
     }
 
     @Provides
-    ShowAllTableCurrencyFragmentContract.View provideShowAllTableCurrencyFragmentContractView(){
+    ShowAllListCurrencyFragmentContract.View provideShowAllTableCurrencyFragmentContractView(){
         return view;
     }
 }

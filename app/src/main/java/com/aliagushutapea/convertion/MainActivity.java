@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         super.onResume();
         toMainContent();
         hideNavigationBar();
+        mainActivityPresenter.insertDataToDatabase();
     }
 
     private void hideNavigationBar() {

@@ -15,4 +15,5 @@
     <string name="show_all_table">Show All Table</string>
     <string name="example">eg. 123</string>
     <string name="example_result">eg. Rp. 1000.000, 00</string>
+    <string name="show_all_currency">Show All Currency</string>
 </resources>

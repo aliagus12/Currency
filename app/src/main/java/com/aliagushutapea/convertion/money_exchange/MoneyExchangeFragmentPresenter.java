@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import javax.inject.Inject;
 
@@ -13,12 +14,10 @@ import javax.inject.Inject;
 
 public class MoneyExchangeFragmentPresenter implements MoneyExchangeFragmentContract.Presenter {
 
+    private static final String TAG = MoneyExchangeFragmentPresenter.class.getSimpleName();
     private MoneyExchangeFragmentContract.View view;
     private CurrencyModel currencyModel;
     private DatabaseManagerHelper databaseManagerHelper;
-    private static final String TABLE_CURRENCY_TARGET = "currencyTarget";
-    private static final String TABLE_CURRENCY_RESULT = "currencyResult";
-    public static final String COL_CURRENCY_ID = "currencyId";
 
     @Inject
     public MoneyExchangeFragmentPresenter(
@@ -40,22 +39,22 @@ public class MoneyExchangeFragmentPresenter implements MoneyExchangeFragmentCont
     public void stop() {
     }
 
-    public void showListCurrency(View view){
-        this.view.showAllCurrency(view);
-    }
-
     @Override
     public void loadData() {
         CurrencyModel target = databaseManagerHelper
-                .fetchCurrencyModelFromDatabaseHelper(
-                        TABLE_CURRENCY_TARGET,
-                        COL_CURRENCY_ID
-                );
+                .getCurrencyModelWithoutKey(SourceString.TARGET_CURRENCY_COLOMN);
         CurrencyModel result = databaseManagerHelper
-                .fetchCurrencyModelFromDatabaseHelper(
-                        TABLE_CURRENCY_RESULT,
-                        COL_CURRENCY_ID
-                );
+                .getCurrencyModelWithoutKey(SourceString.RESULT_CURRENCY_COLOMN);
         view.loadDataToView(target, result);
+    }
+
+    public void showListCurrency(View view){
+        currencyModel.setKeyConfiguration("configuration");
+        currencyModel.setValueConfiguration("content");
+        databaseManagerHelper.saveConfiguration(
+                SourceString.CONFIGURATION_COLOMN,
+                currencyModel
+        );
+        this.view.showAllCurrency(view);
     }
 }

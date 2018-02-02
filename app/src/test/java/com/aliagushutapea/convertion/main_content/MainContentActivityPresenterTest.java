@@ -15,6 +15,7 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 /**
@@ -31,6 +32,7 @@ public class MainContentActivityPresenterTest {
     MainContentActivityContract.View view;
     CurrencyModel currencyModel;
     DatabaseManagerHelper databaseManagerHelper;
+    public static final String TABLE_CONFIGURATION = "configuration";
     Context context;
 
     @Before
@@ -52,5 +54,18 @@ public class MainContentActivityPresenterTest {
     public void shouldShowFragmentAddCurrency() throws Exception {
         mPresenter.addCurrency();
         Mockito.verify(view).attachFragmentAddCurrency();
+    }
+
+    @Test
+    public void shouldInspecDatabase() throws Exception {
+        mPresenter.inspectDatabase();
+        Mockito.verify(view).inspecDatabase();
+    }
+
+    @Test
+    public void shoudSaveConfiguration() throws Exception {
+        mPresenter.saveConfiguration();
+        assertTrue(currencyModel.getValueConfiguration().equals("navigation"));
+        Mockito.verify(databaseManagerHelper).saveConfiguration(currencyModel, TABLE_CONFIGURATION);
     }
 }

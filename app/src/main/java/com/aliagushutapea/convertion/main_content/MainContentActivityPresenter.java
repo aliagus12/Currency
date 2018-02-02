@@ -2,6 +2,7 @@ package com.aliagushutapea.convertion.main_content;
 
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import javax.inject.Inject;
 
@@ -14,6 +15,7 @@ public class MainContentActivityPresenter implements MainContentActivityContract
     MainContentActivityContract.View viewContent;
     private CurrencyModel currencyModel;
     private DatabaseManagerHelper databaseManagerHelper;
+    public static final String TABLE_CONFIGURATION = "configuration";
 
     @Inject
     public MainContentActivityPresenter(
@@ -38,10 +40,20 @@ public class MainContentActivityPresenter implements MainContentActivityContract
     }
 
     public void addCurrency() {
-        viewContent.attachFragmentAddCurrency();
+        //viewContent.attachFragmentAddCurrency();
     }
 
-    public void goToInpectionDatabase(){
+    public void inspectDatabase(){
         viewContent.inspecDatabase();
+    }
+
+    @Override
+    public void saveConfiguration() {
+        currencyModel.setKeyConfiguration("configuration");
+        currencyModel.setValueConfiguration("navigation");
+        databaseManagerHelper.saveConfiguration(
+                SourceString.CONFIGURATION_COLOMN,
+                currencyModel
+        );
     }
 }

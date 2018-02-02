@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.aliagushutapea.convertion.MainApplication;
@@ -15,7 +16,7 @@ import com.aliagushutapea.convertion.databinding.FragmentMoneyExchangerBinding;
 import com.aliagushutapea.convertion.dependencyinjection.component_mpv.DaggerMoneyExchangeComponent;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.MoneyExchangeFragmentPresenterModule;
 import com.aliagushutapea.convertion.model.CurrencyModel;
-import com.aliagushutapea.convertion.show_all_table.ShowAllTableCurrencyFragment;
+import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragment;
 import com.aliagushutapea.convertion.utils.AutoResizeTextView;
 import com.bumptech.glide.Glide;
 
@@ -90,19 +91,19 @@ public class MoneyExchangeFragment extends Fragment implements MoneyExchangeFrag
 
     @Override
     public void showAllCurrency(View view) {
-        ShowAllTableCurrencyFragment addCurrencyFragment = new ShowAllTableCurrencyFragment();
-        switch (view.getId()){
+        ShowAllListCurrencyFragment listAllCurrency = new ShowAllListCurrencyFragment();
+        switch (view.getId()) {
             case R.id.imageMoneyTarget:
-                addCurrencyFragment.setFilter("target");
+                listAllCurrency.setFilter("target");
                 break;
             case R.id.imageMoneyResult:
-                addCurrencyFragment.setFilter("result");
+                listAllCurrency.setFilter("result");
                 break;
         }
-        addCurrencyFragment.setContext(getContext());
-        addCurrencyFragment.show(
+        listAllCurrency.setContext(getContext());
+        listAllCurrency.show(
                 getFragmentManager(),
-                addCurrencyFragment.getTag()
+                listAllCurrency.getTag()
         );
         onPause();
     }
@@ -110,23 +111,24 @@ public class MoneyExchangeFragment extends Fragment implements MoneyExchangeFrag
     @Override
     public void loadDataToView(CurrencyModel target, CurrencyModel result) {
         setTextViewResult(result);
-        binding.nameCurrencyTarget.setText(target.getCurrencyName());
-        binding.nameCurrencyResult.setText(result.getCurrencyName());
-        Glide.with(getContext())
-                .load(target.getCurrencyImagePath())
-                .error(R.drawable.ic_broken_image_grey_24dp)
-                .into(binding.imageMoneyTarget);
+        binding.nameCurrencyTarget.setText(target.getSymbol());
+        binding.nameCurrencyResult.setText(result.getSymbol());
+        setImageView(binding.imageMoneyTarget, target);
+        setImageView(binding.imageMoneyResult, result);
+    }
 
+    private void setImageView(ImageView imageView, CurrencyModel model) {
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(getContext())
-                .load(result.getCurrencyImagePath())
+                .load(model.getImageCurrency())
                 .error(R.drawable.ic_broken_image_grey_24dp)
-                .into(binding.imageMoneyResult);
+                .into(imageView);
     }
 
     private void setTextViewResult(CurrencyModel result) {
-       AutoResizeTextView autoResizeTextView = (AutoResizeTextView) getView().findViewById(R.id.txtCurrencyResult);
-       autoResizeTextView.setMinTextSize(26.f);
-        autoResizeTextView.setText(result.getCurrencyName());
+        AutoResizeTextView autoResizeTextView = (AutoResizeTextView) getView().findViewById(R.id.txtCurrencyResult);
+        autoResizeTextView.setMinTextSize(26.f);
+        //autoResizeTextView.setText(result.getCurrencyName());
         autoResizeTextView.resizeText();
     }
 

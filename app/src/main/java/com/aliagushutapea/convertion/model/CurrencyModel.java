@@ -5,50 +5,76 @@ package com.aliagushutapea.convertion.model;
  */
 
 public class CurrencyModel {
-    String currencyId;
-    String currencyName;
-    String currencyCountryPath;
-    String nameCountry;
-    String currencyImagePath;
+    String mSymbol;
+    String mName;
+    String mCountry;
+    String mSymbolNative;
+    String mImageCountry;
+    String mImageCurrency;
+    String keyConfiguration;
+    String valueConfiguration;
 
-    public String getCurrencyId() {
-        return currencyId;
+    public String getKeyConfiguration() {
+        return keyConfiguration;
     }
 
-    public void setCurrencyId(String currencyId) {
-        this.currencyId = currencyId;
+    public void setKeyConfiguration(String keyConfiguration) {
+        this.keyConfiguration = keyConfiguration;
     }
 
-    public String getCurrencyName() {
-        return currencyName;
+    public String getValueConfiguration() {
+        return valueConfiguration;
     }
 
-    public void setCurrencyName(String currencyName) {
-        this.currencyName = currencyName;
+    public void setValueConfiguration(String valueConfiguration) {
+        this.valueConfiguration = valueConfiguration;
     }
 
-    public String getCurrencyCountryPath() {
-        return currencyCountryPath;
+    public String getSymbol() {
+        return mSymbol;
     }
 
-    public void setCurrencyCountryPath(String currencyCountryPath) {
-        this.currencyCountryPath = currencyCountryPath;
+    public void setSymbol(String mSymbol) {
+        this.mSymbol = mSymbol;
     }
 
-    public String getNameCountry() {
-        return nameCountry;
+    public String getName() {
+        return mName;
     }
 
-    public void setCountryName(String countryName) {
-        this.nameCountry = countryName;
+    public void setName(String mName) {
+        this.mName = mName;
     }
 
-    public String getCurrencyImagePath() {
-        return currencyImagePath;
+    public String getCountry() {
+        return mCountry;
     }
 
-    public void setCurrencyImagePath(String currencyImagePath) {
-        this.currencyImagePath = currencyImagePath;
+    public void setCountry(String mCountry) {
+        this.mCountry = mCountry;
     }
 
+    public String getSymbolNative() {
+        return mSymbolNative;
+    }
+
+    public void setSymbolNative(String mSymbolNative) {
+        this.mSymbolNative = mSymbolNative;
+    }
+
+    public String getImageCountry() {
+        return mImageCountry;
+    }
+
+    public void setImageCountry(String mImageCountry) {
+        this.mImageCountry = mImageCountry;
+    }
+
+    public String getImageCurrency() {
+        return mImageCurrency;
+    }
+
+    public void setImageCurrency(String mImageCurrency) {
+        this.mImageCurrency = mImageCurrency;
+    }
 }

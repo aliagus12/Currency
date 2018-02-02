@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aliagushutapea.convertion.R;
+import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -23,6 +25,8 @@ implements View.OnClickListener {
 
     public static final int MONEY_EXCHANGE_CONTENT = 1;
     public static final int LOADING_CONTENT = 2;
+    public static final String KEY = "configuration";
+    public static final String TAG = AdapterCurrencyExchange.class.getSimpleName();
     private ListenerAdapterCurrencyExchange mListener;
     public View view;
     private List<CurrencyModel> listCurrency;
@@ -59,8 +63,20 @@ implements View.OnClickListener {
             case MONEY_EXCHANGE_CONTENT:
                 ViewHolderContent viewHolderContent = (ViewHolderContent) holder;
                 CurrencyModel currencyModel = listCurrency.get(position);
-                viewHolderContent.itemView.setTag(currencyModel);
-                viewHolderContent.itemView.setOnClickListener(this);
+                DatabaseManagerHelper helper = DatabaseManagerHelper.getInstance(context);
+                String value = helper.fetchConfiguration(
+                        SourceString.CONFIGURATION_COLOMN,
+                        KEY
+                );
+                if (value.equals("navigation")) {
+                    viewHolderContent.itemView.setTag(currencyModel);
+                    viewHolderContent.itemView.setTag(R.integer.key, value);
+                    viewHolderContent.itemView.setOnClickListener(this);
+                } else if (value.equals("content")){
+                    viewHolderContent.itemView.setTag(currencyModel);
+                    viewHolderContent.itemView.setTag(R.integer.key, value);
+                    viewHolderContent.itemView.setOnClickListener(this);
+                }
                 viewHolderContent.bind(currencyModel);
                 break;
 
@@ -91,26 +107,32 @@ implements View.OnClickListener {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageCountry;
-        private final TextView txtNameCountry;
+        private final TextView txtNameCurrency;
         private final ImageView imageCurrency;
+        private final TextView txtNameContry;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtNameCountry = (TextView) itemView.findViewById(R.id.nameCurrency);
+            txtNameCurrency = (TextView) itemView.findViewById(R.id.nameCurrency);
+            txtNameContry = (TextView) itemView.findViewById(R.id.nameCountry);
             imageCountry = (ImageView) itemView.findViewById(R.id.countryImage);
             imageCurrency = (ImageView) itemView.findViewById(R.id.imageCurrency);
+            
         }
 
         public void bind(CurrencyModel currencyModel) {
-            String imagePathCountry = currencyModel.getCurrencyCountryPath();
-            String imagePathCurrency = currencyModel.getCurrencyImagePath();
-            String nameCountry = currencyModel.getCurrencyName();
+            String imagePathCountry = currencyModel.getImageCountry();
+            String imagePathCurrency = currencyModel.getImageCurrency();
+            String nameCurrency = currencyModel.getName();
+            String nameCountry = currencyModel.getCountry();
             setImageView(imagePathCurrency, imageCurrency);
             setImageView(imagePathCountry, imageCountry);
-            txtNameCountry.setText(nameCountry);
+            txtNameCurrency.setText(nameCurrency);
+            txtNameContry.setText(nameCountry);
         }
 
         private void setImageView(String imagePath, ImageView imageView) {
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(context)
                     .load(imagePath)
                     .error(R.drawable.ic_broken_image_grey_24dp)

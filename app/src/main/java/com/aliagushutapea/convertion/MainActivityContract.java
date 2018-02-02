@@ -14,5 +14,6 @@ public interface MainActivityContract {
     }
 
     interface Presenter extends BasePresenter {
+        void insertDataToDatabase();
     }
 }

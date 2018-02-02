@@ -17,6 +17,6 @@
 
     <item
         android:id="@+id/menu_navigation_drawer_show_all_table"
-        android:icon="@drawable/ic_lock_open_black_24dp"
-        android:title="@string/show_all_table"/>
+        android:icon="@drawable/ic_attach_money_greys_24dp"
+        android:title="@string/show_all_currency"/>
 </menu>

@@ -23,6 +23,6 @@
             app:theme="@style/AppThemeToolbar"
             app:titleTextAppearance="@style/ToolbarTitleAppearance"
             tools:targetApi="lollipop"
-            android:onClick="@{(view) -> presenter.goToInpectionDatabase()}"/>
+            android:onClick="@{(view) -> presenter.inspectDatabase()}"/>
     </RelativeLayout>
 </layout>

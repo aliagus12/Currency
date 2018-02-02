@@ -14,8 +14,12 @@ public interface MainContentActivityContract {
         void attachFragmentAddCurrency();
 
         void inspecDatabase();
+
+        void detailCurrency(String currencyId);
+
     }
 
     interface Presenter extends BasePresenter {
+        void saveConfiguration();
     }
 }

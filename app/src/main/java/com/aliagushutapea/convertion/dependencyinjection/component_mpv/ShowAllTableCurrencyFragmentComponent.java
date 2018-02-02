@@ -1,7 +1,7 @@
 package com.aliagushutapea.convertion.dependencyinjection.component_mpv;
 
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.ShowAllTableCurrencyFragmentModule;
-import com.aliagushutapea.convertion.show_all_table.ShowAllTableCurrencyFragment;
+import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragment;
 
 import dagger.Component;
 
@@ -12,5 +12,5 @@ import dagger.Component;
 modules = ShowAllTableCurrencyFragmentModule.class
 )
 public interface ShowAllTableCurrencyFragmentComponent {
-    void inject(ShowAllTableCurrencyFragment showAllTableCurrencyFragment);
+    void inject(ShowAllListCurrencyFragment showAllListCurrencyFragment);
 }

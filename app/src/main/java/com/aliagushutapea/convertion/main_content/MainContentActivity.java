@@ -21,14 +21,14 @@ import android.widget.Toast;
 
 import com.aliagushutapea.convertion.MainApplication;
 import com.aliagushutapea.convertion.R;
-import com.aliagushutapea.convertion.add_currency.AddCurrencyFragment;
+import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragment;
 import com.aliagushutapea.convertion.add_table_currency.AddTableCurrencyFragment;
 import com.aliagushutapea.convertion.database_helper.InspectionDatabase;
 import com.aliagushutapea.convertion.databinding.ActivityMainContentBinding;
 import com.aliagushutapea.convertion.dependencyinjection.component_mpv.DaggerMainContentActivityComponent;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.MainContentActivityPresenterModule;
 import com.aliagushutapea.convertion.money_exchange.MoneyExchangeFragment;
-import com.aliagushutapea.convertion.show_all_table.ShowAllTableCurrencyFragment;
+import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragment;
 import com.aliagushutapea.convertion.temperature_exchange.TemperatureExchange;
 
 import java.util.ArrayList;
@@ -49,15 +49,14 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
     private BottomNavigationView bottomNavigationView;
     private static final String TAG = MainContentActivity.class.getSimpleName();
     private Toast toast;
-    private AddCurrencyFragment addCurrencyFragment;
+    private DetailCurrencyFragment detailCurrencyFragment;
     private AddTableCurrencyFragment addTableCurrencyFragment;
-    private ShowAllTableCurrencyFragment showAllTableCurrencyFragment;
+    private ShowAllListCurrencyFragment showAllListCurrencyFragment;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("component", String.valueOf(MainApplication.get(getApplicationContext()).getApplicationComponentMVP()));
         DaggerMainContentActivityComponent
                 .builder()
                 .mainContentActivityPresenterModule(new MainContentActivityPresenterModule(this))
@@ -191,11 +190,12 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
                 );
                 break;
             case R.id.menu_navigation_drawer_show_all_table:
-                showAllTableCurrencyFragment = new ShowAllTableCurrencyFragment();
-                showAllTableCurrencyFragment.setContext(getApplicationContext());
-                showAllTableCurrencyFragment.show(
+                presenter.saveConfiguration();
+                showAllListCurrencyFragment = new ShowAllListCurrencyFragment();
+                showAllListCurrencyFragment.setContext(getApplicationContext());
+                showAllListCurrencyFragment.show(
                         getSupportFragmentManager(),
-                        showAllTableCurrencyFragment.getTag()
+                        showAllListCurrencyFragment.getTag()
                 );
                 break;
         }
@@ -221,11 +221,11 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
 
     @Override
     public void attachFragmentAddCurrency() {
-        addCurrencyFragment = new AddCurrencyFragment();
-        addCurrencyFragment.setContext(getApplicationContext());
-        addCurrencyFragment.show(
+        detailCurrencyFragment = new DetailCurrencyFragment();
+        detailCurrencyFragment.setContext(getApplicationContext());
+        detailCurrencyFragment.show(
                 getSupportFragmentManager(),
-                addCurrencyFragment.getTag()
+                detailCurrencyFragment.getTag()
         );
     }
 
@@ -235,7 +235,18 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
         startActivity(intent);
     }
 
+    @Override
+    public void detailCurrency(String currencyId) {
+        /*Intent intent = new Intent(MainContentActivity.this, DetailsCurrency.class);
+        intent.putExtra("key", currencyId);
+        startActivity(intent);*/
+    }
+
     public void refresh() {
         onResume();
+    }
+
+    public void showDialog(){
+
     }
 }
