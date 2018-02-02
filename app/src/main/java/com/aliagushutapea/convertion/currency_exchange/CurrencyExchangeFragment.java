@@ -1,4 +1,4 @@
-package com.aliagushutapea.convertion.money_exchange;
+package com.aliagushutapea.convertion.currency_exchange;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -26,18 +26,18 @@ import javax.inject.Inject;
  * Created by ali on 07/01/18.
  */
 
-public class MoneyExchangeFragment extends Fragment implements MoneyExchangeFragmentContract.View {
+public class CurrencyExchangeFragment extends Fragment implements CurrencyExchangeFragmentContract.View {
 
-    final String TAG = MoneyExchangeFragment.this.getClass().getSimpleName();
+    final String TAG = CurrencyExchangeFragment.this.getClass().getSimpleName();
     PropertyMoney propertyMoney;
     public static final int CONTENT = 1;
     public static final int LOADING = 2;
     @Inject
-    MoneyExchangeFragmentPresenter presenter;
+    CurrencyExchangeFragmentPresenter presenter;
     FragmentMoneyExchangerBinding binding;
     private Toast toast;
 
-    public MoneyExchangeFragment() {
+    public CurrencyExchangeFragment() {
     }
 
     @Override

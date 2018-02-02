@@ -6,6 +6,7 @@ import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragmentContract;
 import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragmentPresenter;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,26 +45,30 @@ public class DetailCurrencyFragmentPresenterTest {
 
     @Test
     public void shouldSaveDataCurrencyToDatabase() throws Exception {
-        String idCurrency = "fake idCurrency";
-        String nameCurrency = "fake nameCurrency";
+        String symbol = "fake symbol";
+        String name = "fake name";
         String countryName = "fake countryName";
-        String imagePathCountry = "fake imagePathCountry";
-        String imagePathCurrency = "fake imagePathCurrency";
-        Mockito.when(mDatabaseManagerHelper.isCurrencyIdExists(idCurrency, "currency", COL_CURRENCY_ID))
-                .thenReturn(false);
-
+        String symbolNative = "fake symbol native";
+        String imageCountry = "fake imageCountry";
+        String imageCurrency = "fake imageCurrency";
         mPresenter.saveDataCurrencyToDataBase(
-                idCurrency,
-                nameCurrency,
-                countryName,imagePathCountry,
-                imagePathCurrency
+                symbol,
+                name,
+                countryName,
+                symbolNative,
+                imageCountry,
+                imageCurrency
         );
-        assertTrue(mCurrencyModel.getCurrencyId().equals(idCurrency));
-        assertTrue(mCurrencyModel.getNameCountry().equals(countryName));
-        assertTrue(mCurrencyModel.getCurrencyName().equals(nameCurrency));
-        assertTrue(mCurrencyModel.getCurrencyImagePath().equals(imagePathCurrency));
-        assertTrue(mCurrencyModel.getCurrencyCountryPath().equals(imagePathCountry));
+        assertTrue(mCurrencyModel.getSymbol().equals(symbol));
+        assertTrue(mCurrencyModel.getName().equals(name));
+        assertTrue(mCurrencyModel.getCountry().equals(countryName));
+        assertTrue(mCurrencyModel.getSymbolNative().equals(symbolNative));
+        assertTrue(mCurrencyModel.getImageCountry().equals(imageCountry));
+        assertTrue(mCurrencyModel.getImageCurrency().equals(imageCurrency));
         Mockito.verify(mView).dismissDialog();
-        Mockito.verify(mDatabaseManagerHelper).addCurrency(mCurrencyModel);
+        Mockito.verify(mDatabaseManagerHelper).insertCurrencyToDataBase(
+                SourceString.ALL_CURRENCY_COLOMN,
+                mCurrencyModel
+        );
     }
 }

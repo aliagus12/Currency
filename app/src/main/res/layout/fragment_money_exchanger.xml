@@ -5,15 +5,15 @@
 
         <variable
             name="propertyMoney"
-            type="com.aliagushutapea.convertion.money_exchange.PropertyMoney" />
+            type="com.aliagushutapea.convertion.currency_exchange.PropertyMoney" />
 
         <variable
             name="presenter"
-            type="com.aliagushutapea.convertion.money_exchange.MoneyExchangeFragmentPresenter" />
+            type="com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentPresenter" />
 
         <variable
             name="fragment"
-            type="com.aliagushutapea.convertion.money_exchange.MoneyExchangeFragment"/>
+            type="com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragment"/>
     </data>
 
     <LinearLayout

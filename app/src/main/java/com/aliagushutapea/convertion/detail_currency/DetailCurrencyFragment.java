@@ -12,7 +12,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aliagushutapea.convertion.MainApplication;
@@ -48,17 +48,17 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     @BindView(R.id.mainContainerAddCurrency)
     ConstraintLayout constraintLayoutContainerFragmentAddCurrency;
     @BindView(R.id.symbol_currency)
-    AppCompatEditText mEditTextAddIdCurrency;
+    TextView mTextViewSymbolCurrency;
     @BindView(R.id.name_currency)
-    AppCompatEditText mEditTextAddNameCurrency;
+    TextView mTextViewNameCurrency;
     @BindView(R.id.symbol_native)
-    AppCompatEditText mEditTextAddCountryName;
+    TextView mTextViewSymbolNative;
+    @BindView(R.id.name_country)
+    AppCompatEditText mEditTextNameCountry;
     @BindView(R.id.imageAddCurrency)
-    AppCompatImageView mImageViewAddCurrency;
-    @BindView(R.id.imageAddCountry)
-    AppCompatImageView mImageViewAddCountry;
-    @BindView(R.id.floatingAddImageCurrency)
-    FloatingActionButton mFloatingActionButtonAddImageCurrency;
+    AppCompatImageView mImageViewCurrency;
+    @BindView(R.id.imageCountry)
+    AppCompatImageView mImageViewCountry;
     @BindView(R.id.btnOkAddCurrency)
     Button btnOkAddCurrency;
     @BindView(R.id.btnCancelAddCurrency)
@@ -76,10 +76,7 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     private Uri imageUriCurrency;
     private Uri imageUriCountry;
     private Toast toast;
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
+    private CurrencyModel currency;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,12 +92,27 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
 
     @Override
     public void setupDialog(Dialog dialog, int style) {
-        view = View.inflate(getContext(), R.layout.fragment_add_currency, null);
+        view = View.inflate(getContext(), R.layout.fragment_detail_currency, null);
         mCurrencyModel = new CurrencyModel();
         ButterKnife.bind(this, view);
         dialog.setContentView(view);
         setStateDialog(view);
         setToolbar();
+        loadData();
+    }
+
+    private void loadData() {
+        if (currency != null){
+            mTextViewSymbolCurrency.setText("Symbol : " + currency.getSymbol());
+            mTextViewNameCurrency.setText(currency.getName());
+            mTextViewSymbolNative.setText("Symbol Native : " + currency.getSymbolNative());
+            mImageViewCountry.setScaleType(ImageView.ScaleType.FIT_XY);
+            setImageView(currency.getImageCountry(), mImageViewCountry);
+            setImageView(currency.getImageCurrency(), mImageViewCurrency);
+            if (!currency.getCountry().equals("") && !currency.getCountry().equals("-")) {
+                mEditTextNameCountry.setText(currency.getCountry());
+            }
+        }
     }
 
     private void setToolbar() {
@@ -147,7 +159,6 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
 
     @OnClick({
             R.id.imageAddCurrency,
-            R.id.imageAddCountry,
             R.id.btnCancelAddCurrency,
             R.id.btnOkAddCurrency
     })
@@ -156,10 +167,6 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
             case R.id.imageAddCurrency:
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE_CURRENCY);
-                break;
-            case R.id.imageAddCountry:
-                Intent ii = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(ii, RESULT_LOAD_IMAGE_COUNTRY);
                 break;
             case R.id.btnOkAddCurrency:
                 saveDataCurrency();
@@ -172,21 +179,19 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     }
 
     private void saveDataCurrency() {
-        String idCurrency = checkNullable(mEditTextAddIdCurrency, "-");
-        String nameCurrency = checkNullable(mEditTextAddNameCurrency, "-");
-        String countryName = checkNullable(mEditTextAddCountryName, "-");
-
-        String imagePathCountry = !String.valueOf(imageUriCountry).equals("null") ?
-                imageUriCountry.toString() : "-";
+        String countryName = checkNullable(mEditTextNameCountry, "-");
 
         String imagePathCurrency = !String.valueOf(imageUriCurrency).equals("null") ?
                 imageUriCurrency.toString() : "-";
-
+        if (imagePathCurrency.equals("-")){
+            imagePathCurrency = currency.getImageCurrency();
+        }
         mPresenter.saveDataCurrencyToDataBase(
-                idCurrency,
-                nameCurrency,
+                currency.getSymbol(),
+                currency.getName(),
                 countryName,
-                imagePathCountry,
+                currency.getSymbolNative(),
+                currency.getImageCountry(),
                 imagePathCurrency
         );
     }
@@ -207,24 +212,24 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
             case RESULT_LOAD_IMAGE_CURRENCY:
                 if (null != data) {
                     imageUriCurrency = data.getData();
-                    mImageViewAddCurrency.setScaleType(ImageView.ScaleType.FIT_XY);
-                    setImageView(imageUriCurrency, mImageViewAddCurrency);
+                    mImageViewCurrency.setScaleType(ImageView.ScaleType.FIT_XY);
+                    setImageView(imageUriCurrency, mImageViewCurrency);
                 }
                 break;
 
-            case RESULT_LOAD_IMAGE_COUNTRY:
-                if (null != data) {
-                    imageUriCountry = data.getData();
-                    mImageViewAddCountry.setScaleType(ImageView.ScaleType.FIT_XY);
-                    setImageView(imageUriCountry, mImageViewAddCountry);
-                }
-                break;
             default:
                 break;
         }
     }
 
     private void setImageView(Uri imageUri, AppCompatImageView imageView) {
+        Glide.with(context)
+                .load(imageUri)
+                .error(R.drawable.ic_broken_image_grey_24dp)
+                .into(imageView);
+    }
+
+    private void setImageView(String imageUri, AppCompatImageView imageView) {
         Glide.with(context)
                 .load(imageUri)
                 .error(R.drawable.ic_broken_image_grey_24dp)
@@ -253,5 +258,13 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
             btnOkAddCurrency.setVisibility(View.VISIBLE);
             btnCancelAddCurrency.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void setCurrency(CurrencyModel currency) {
+        this.currency = currency;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

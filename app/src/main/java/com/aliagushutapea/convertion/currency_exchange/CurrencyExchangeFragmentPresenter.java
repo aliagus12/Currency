@@ -1,4 +1,4 @@
-package com.aliagushutapea.convertion.money_exchange;
+package com.aliagushutapea.convertion.currency_exchange;
 
 import android.view.View;
 
@@ -12,16 +12,16 @@ import javax.inject.Inject;
  * Created by ali on 07/01/18.
  */
 
-public class MoneyExchangeFragmentPresenter implements MoneyExchangeFragmentContract.Presenter {
+public class CurrencyExchangeFragmentPresenter implements CurrencyExchangeFragmentContract.Presenter {
 
-    private static final String TAG = MoneyExchangeFragmentPresenter.class.getSimpleName();
-    private MoneyExchangeFragmentContract.View view;
+    private static final String TAG = CurrencyExchangeFragmentPresenter.class.getSimpleName();
+    private CurrencyExchangeFragmentContract.View view;
     private CurrencyModel currencyModel;
     private DatabaseManagerHelper databaseManagerHelper;
 
     @Inject
-    public MoneyExchangeFragmentPresenter(
-            MoneyExchangeFragmentContract.View view,
+    public CurrencyExchangeFragmentPresenter(
+            CurrencyExchangeFragmentContract.View view,
             CurrencyModel currencyModel,
             DatabaseManagerHelper databaseManagerHelper
     ) {

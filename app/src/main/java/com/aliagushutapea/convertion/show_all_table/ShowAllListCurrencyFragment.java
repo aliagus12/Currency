@@ -142,13 +142,15 @@ public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment imple
     @Override
     public void onHolderClick(View view) {
         CurrencyModel currencyModel = (CurrencyModel) view.getTag();
-        String value = (String) view.getTag(R.integer.key);
-        if (value.equals("content")) {
-            mPresenter.saveCurrencyModelToDatabase(currencyModel, filter);
-            ((MainContentActivity) getActivity()).refresh();
-        } else if (value.equals("navigation")){
-            ((MainContentActivity)getActivity()).detailCurrency(currencyModel.getSymbol());
-        }
+        mPresenter.saveCurrencyModelToDatabase(currencyModel, filter);
+        ((MainContentActivity) getActivity()).refresh();
+        dismissAllowingStateLoss();
+    }
+
+    @Override
+    public void onHolderClickToDetail(View view) {
+        CurrencyModel currencyModel = (CurrencyModel) view.getTag();
+        ((MainContentActivity) getActivity()).detailCurrency(currencyModel);
         dismissAllowingStateLoss();
     }
 

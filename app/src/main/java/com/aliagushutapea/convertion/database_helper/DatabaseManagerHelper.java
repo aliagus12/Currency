@@ -48,28 +48,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         return instance;
     }
 
-    /*public void addCurrency(CurrencyModel currencyModel) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(CurrencyColomn.COL_CURRENCY_ID, currencyModel.getCurrencyId());
-        contentValues.put(CurrencyColomn.COL_CURRENCY_NAME, currencyModel.getCurrencyName());
-        contentValues.put(CurrencyColomn.COL_COUNTRY_NAME, currencyModel.getNameCountry());
-        contentValues.put(CurrencyColomn.COL_CURRENCY_COUNTRY_IMAGE_PATH, currencyModel.getCurrencyCountryPath());
-        contentValues.put(CurrencyColomn.COL_CURRENCY_IMAGE_PATH, currencyModel.getCurrencyImagePath());
-        CurrencyModel exist = getCurrencyModelByCurrencyIdFromDatabaseHelper(
-                Integer.parseInt(currencyModel.getCurrencyId()),
-                CurrencyColomn.COL_CURRENCY_ID,
-                CurrencyColomn.TABLE_CURRENCY
-        );
-        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        if (exist.getCurrencyId() != null && Integer.parseInt(exist.getCurrencyId()) > 0) {
-            String where = CurrencyColomn.COL_CURRENCY_ID + " = ?";
-            String[] args = new String[]{currencyModel.getCurrencyId()};
-            sqLiteDatabase.update(CurrencyColomn.TABLE_CURRENCY, contentValues, where, args);
-        } else {
-            sqLiteDatabase.insert(CurrencyColomn.TABLE_CURRENCY, null, contentValues);
-        }
-    }*/
-
     public void insertCurrencyToDataBase(
             String[] arrayColomn,
             CurrencyModel currencyModel
@@ -94,64 +72,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
             sqLiteDatabase.insert(arrayColomn[0], null, contentValues);
         }
     }
-
-    /*public CurrencyModel getCurrencyModelByCurrencyIdFromDatabaseHelper(
-            int id,
-            String colCurrencyId,
-            String tableNameCurrency
-    ) {
-        String where = colCurrencyId + " = ?";
-        String[] args = new String[]{String.valueOf(id)};
-        return fetchCurrencyModelByCurrencyIdFromDatabaseHelper(
-                where,
-                args,
-                null,
-                null,
-                null,
-                null,
-                tableNameCurrency
-        );
-    }*/
-
-    /*private CurrencyModel fetchCurrencyModelByCurrencyIdFromDatabaseHelper(
-            String where,
-            String[] args,
-            String group,
-            String having,
-            String order,
-            String limit,
-            String tableNameCurrency
-    ) {
-        String[] columnTbCurrency = new String[]{
-                CurrencyColomn.COL_CURRENCY_ID,
-                CurrencyColomn.COL_CURRENCY_NAME,
-                CurrencyColomn.COL_COUNTRY_NAME,
-                CurrencyColomn.COL_CURRENCY_COUNTRY_IMAGE_PATH,
-                CurrencyColomn.COL_CURRENCY_IMAGE_PATH
-        };
-        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        Cursor cursor = sqLiteDatabase.query(
-                tableNameCurrency,
-                columnTbCurrency,
-                where,
-                args,
-                group,
-                having,
-                order,
-                limit
-        );
-        CurrencyModel currencyModel = new CurrencyModel();
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            currencyModel.setCurrencyId(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_ID)));
-            currencyModel.setCurrencyName(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_NAME)));
-            currencyModel.setCountryName(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_COUNTRY_NAME)));
-            currencyModel.setCurrencyCountryPath(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_COUNTRY_IMAGE_PATH)));
-            currencyModel.setCurrencyImagePath(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_IMAGE_PATH)));
-        }
-        cursor.close();
-        return currencyModel;
-    }*/
 
     public void deleteCurrencyModelByCurrencyIdFromDatabaseHelper(String currencyId) {
         String where = CurrencyColomn.COL_CURRENCY_ID + " = ?";
@@ -202,20 +122,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         return value;
     }
 
-    /*public Boolean isCurrencyIdExists(String idCurrency, String nameTable, String colomnId) {
-        CurrencyModel currencyModel = fetchCurrencyModelByCurrencyIdFromDatabaseHelper(
-                idCurrency,
-                nameTable,
-                colomnId
-        );
-        String id = currencyModel.getCurrencyId();
-        Boolean result = false;
-        if (!id.equals("")) {
-            result = true;
-        }
-        return result;
-    }*/
-
     public Boolean isExists(String[] arrayColomn, String key) {
         CurrencyModel model = getCurrencyModelByKey(
                 arrayColomn,
@@ -228,34 +134,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         }
         return result;
     }
-
-    /*public CurrencyModel fetchCurrencyModelByCurrencyIdFromDatabaseHelper(
-            String idCurrency,
-            String nameTable,
-            String colomnId
-    ) {
-        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        String selectQuery = "SELECT * FROM " + nameTable + " WHERE "
-                + colomnId + " = '" + idCurrency + "'";
-        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
-        CurrencyModel currencyModel = new CurrencyModel();
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            currencyModel.setCurrencyId(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_ID)));
-            currencyModel.setCurrencyName(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_NAME)));
-            currencyModel.setCountryName(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_COUNTRY_NAME)));
-            currencyModel.setCurrencyCountryPath(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_COUNTRY_IMAGE_PATH)));
-            currencyModel.setCurrencyImagePath(cursor.getString(cursor.getColumnIndex(CurrencyColomn.COL_CURRENCY_IMAGE_PATH)));
-        } else {
-            currencyModel.setCurrencyId("");
-            currencyModel.setCurrencyName("");
-            currencyModel.setCurrencyCountryPath("");
-            currencyModel.setCountryName("");
-            currencyModel.setCurrencyImagePath("");
-        }
-        cursor.close();
-        return currencyModel;
-    }*/
 
     public CurrencyModel getCurrencyModelByKey(
             String[] arrayColomn,
@@ -286,29 +164,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         cursor.close();
         return currencyModel;
     }
-
-    /*public List<CurrencyModel> fetchAllCurrencyModelFromDatabaseManagerHelper(
-            String tableName,
-            String colomnId
-    ) {
-        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        String selectQuery = "SELECT * FROM " + tableName;
-        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
-        List<CurrencyModel> currencyModelList = new ArrayList<>();
-        List<String> listIdCurrency = getListSymbolCurrency(tableName, colomnId);
-
-        if (cursor.getCount() > 0) {
-            for (String id : listIdCurrency) {
-                CurrencyModel currencyModel = fetchCurrencyModelByCurrencyIdFromDatabaseHelper(
-                        id,
-                        tableName,
-                        colomnId
-                );
-                currencyModelList.add(currencyModel);
-            }
-        }
-        return currencyModelList;
-    }*/
 
     public List<CurrencyModel> getAllCurrencyFromDatabase(String[] arrayColomn) {
         SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
@@ -384,7 +239,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
             String[] arrayColomn,
             CurrencyModel currencyModel
     ) {
-        Log.d(TAG, "simbol  "+currencyModel.getSymbol());
         ContentValues contentValues = new ContentValues();
         contentValues.put(arrayColomn[1], currencyModel.getSymbol());
         contentValues.put(arrayColomn[2], currencyModel.getName());
@@ -404,42 +258,6 @@ public class DatabaseManagerHelper extends DatabaseHelper {
             sqLiteDatabase.insert(arrayColomn[0], null, contentValues);
         }
     }
-
-    /*public void saveCurrencyToTableResult(CurrencyModel currencyModel) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(CurrencyResultColomn.COL_CURRENCY_ID, currencyModel.getCurrencyId());
-        contentValues.put(CurrencyResultColomn.COL_CURRENCY_NAME, currencyModel.getCurrencyName());
-        contentValues.put(CurrencyResultColomn.COL_COUNTRY_NAME, currencyModel.getNameCountry());
-        contentValues.put(CurrencyResultColomn.COL_CURRENCY_COUNTRY_IMAGE_PATH, currencyModel.getCurrencyCountryPath());
-        contentValues.put(CurrencyResultColomn.COL_CURRENCY_IMAGE_PATH, currencyModel.getCurrencyImagePath());
-        boolean isHaveField = getListSymbolCurrency(CurrencyResultColomn.TABLE_CURRENCY_RESULT, CurrencyResultColomn.COL_ID).size() > 0 ? true : false;
-        String oldCurrencyId = getListSymbolCurrency(CurrencyResultColomn.TABLE_CURRENCY_RESULT, CurrencyResultColomn.COL_ID).get(0);
-        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        if (isHaveField) {
-            String where = CurrencyResultColomn.COL_CURRENCY_ID + " = ?";
-            String[] args = new String[]{oldCurrencyId};
-            sqLiteDatabase.update(CurrencyResultColomn.TABLE_CURRENCY_RESULT, contentValues, where, args);
-        } else {
-            sqLiteDatabase.insert(CurrencyResultColomn.TABLE_CURRENCY_RESULT, null, contentValues);
-        }
-    }*/
-
-    /*public CurrencyModel fetchCurrencyModelFromDatabaseHelper(
-            String tableName,
-            String colomnId
-    ) {
-        List<String> listCurrencyId = getListSymbolCurrency(tableName, colomnId);
-        if (listCurrencyId != null && listCurrencyId.size() != 0){
-            String currencyId = getListSymbolCurrency(tableName, colomnId).get(0) ;
-            CurrencyModel currencyModel = getCurrencyModelByCurrencyIdFromDatabaseHelper(
-                    Integer.parseInt(currencyId),
-                    colomnId,
-                    tableName
-            );
-            return currencyModel;
-        }
-        return new CurrencyModel();
-    }*/
 
     public CurrencyModel getCurrencyModelWithoutKey(String[] arrayColomn) {
         List<String> listCurrencyId = getListSymbolCurrency(arrayColomn);
@@ -474,7 +292,7 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         return currencyModel.getValueConfiguration();
     }
 
-    public String fetchConfiguration(
+    public String getConfiguration(
             String[] arrayColomn,
             String key
     ) {
@@ -536,4 +354,5 @@ public class DatabaseManagerHelper extends DatabaseHelper {
             db.endTransaction();
         }
     }
+
 }

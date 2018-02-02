@@ -27,7 +27,8 @@ import com.aliagushutapea.convertion.database_helper.InspectionDatabase;
 import com.aliagushutapea.convertion.databinding.ActivityMainContentBinding;
 import com.aliagushutapea.convertion.dependencyinjection.component_mpv.DaggerMainContentActivityComponent;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.MainContentActivityPresenterModule;
-import com.aliagushutapea.convertion.money_exchange.MoneyExchangeFragment;
+import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragment;
 import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragment;
 import com.aliagushutapea.convertion.temperature_exchange.TemperatureExchange;
 
@@ -131,7 +132,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
     protected void onResume() {
         super.onResume();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout_content_activity_drawer, new MoneyExchangeFragment())
+                .replace(R.id.frame_layout_content_activity_drawer, new CurrencyExchangeFragment())
                 .commitAllowingStateLoss();
     }
 
@@ -172,7 +173,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
             case R.id.menu_navigation_drawer_money:
                 toolbarAppbar.setTitle(R.string.money_exchange);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame_layout_content_activity_drawer, new MoneyExchangeFragment())
+                        .replace(R.id.frame_layout_content_activity_drawer, new CurrencyExchangeFragment())
                         .commitAllowingStateLoss();
                 break;
             case R.id.menu_navigation_drawer_temperature:
@@ -206,7 +207,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
             case R.id.botton_navigation_money_exchange:
                 toolbarAppbar.setTitle(R.string.money_exchange);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frame_layout_content_activity_drawer, new MoneyExchangeFragment())
+                        .replace(R.id.frame_layout_content_activity_drawer, new CurrencyExchangeFragment())
                         .commitAllowingStateLoss();
                 return true;
             case R.id.botton_navigation_temperature_exchange:
@@ -236,10 +237,14 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
     }
 
     @Override
-    public void detailCurrency(String currencyId) {
-        /*Intent intent = new Intent(MainContentActivity.this, DetailsCurrency.class);
-        intent.putExtra("key", currencyId);
-        startActivity(intent);*/
+    public void detailCurrency(CurrencyModel currency) {
+        detailCurrencyFragment = new DetailCurrencyFragment();
+        detailCurrencyFragment.setContext(getApplicationContext());
+        detailCurrencyFragment.setCurrency(currency);
+        detailCurrencyFragment.show(
+                getSupportFragmentManager(),
+                detailCurrencyFragment.getTag()
+        );
     }
 
     public void refresh() {

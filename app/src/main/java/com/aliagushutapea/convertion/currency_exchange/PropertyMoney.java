@@ -1,4 +1,4 @@
-package com.aliagushutapea.convertion.money_exchange;
+package com.aliagushutapea.convertion.currency_exchange;
 
 /**
  * Created by ali on 07/01/18.

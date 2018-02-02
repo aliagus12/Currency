@@ -2,8 +2,11 @@ package com.aliagushutapea.convertion.money_exchange;
 
 import android.view.View;
 
+import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentContract;
+import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentPresenter;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,24 +27,20 @@ import static junit.framework.TestCase.assertTrue;
 
 })
 @PowerMockIgnore("javax.net.ssl.*")
-public class MoneyExchangeFragmentPresenterTest {
+public class CurrencyExchangeFragmentPresenterTest {
 
-    MoneyExchangeFragmentPresenter presenter;
-    MoneyExchangeFragmentContract.View view;
+    CurrencyExchangeFragmentPresenter presenter;
+    CurrencyExchangeFragmentContract.View view;
     DatabaseManagerHelper mDatabaseManagerHelper;
     CurrencyModel mCurrencyModel;
-    private static final String TABLE_CURRENCY_TARGET = "currencyTarget";
-    private static final String TABLE_CURRENCY_RESULT = "currencyResult";
-    public static final String TABLE_CONFIGURATION = "configuration";
-    public static final String COL_CURRENCY_ID = "currencyId";
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mDatabaseManagerHelper = Mockito.mock(DatabaseManagerHelper.class);
-        view = Mockito.mock(MoneyExchangeFragmentContract.View.class);
+        view = Mockito.mock(CurrencyExchangeFragmentContract.View.class);
         mCurrencyModel = new CurrencyModel();
-        presenter = new MoneyExchangeFragmentPresenter(
+        presenter = new CurrencyExchangeFragmentPresenter(
                 view,
                 mCurrencyModel,
                 mDatabaseManagerHelper
@@ -52,14 +51,12 @@ public class MoneyExchangeFragmentPresenterTest {
     public void shouldViewLoadData() throws Exception {
         CurrencyModel target = new CurrencyModel();
         CurrencyModel result = new CurrencyModel();
-        Mockito.when(mDatabaseManagerHelper.fetchCurrencyModelFromDatabaseHelper(
-                TABLE_CURRENCY_TARGET,
-                COL_CURRENCY_ID
-        )).thenReturn(target);
-        Mockito.when(mDatabaseManagerHelper.fetchCurrencyModelFromDatabaseHelper(
-                TABLE_CURRENCY_RESULT,
-                COL_CURRENCY_ID
-        )).thenReturn(result);
+        Mockito.when(mDatabaseManagerHelper.getCurrencyModelWithoutKey(
+                SourceString.TARGET_CURRENCY_COLOMN)
+        ).thenReturn(target);
+        Mockito.when(mDatabaseManagerHelper.getCurrencyModelWithoutKey(
+                SourceString.RESULT_CURRENCY_COLOMN)
+        ).thenReturn(result);
 
         presenter.loadData();
         Mockito.verify(view).loadDataToView(target, result);
@@ -71,7 +68,7 @@ public class MoneyExchangeFragmentPresenterTest {
 
         presenter.showListCurrency(view);
         assertTrue(mCurrencyModel.getValueConfiguration().equals("content"));
-        Mockito.verify(mDatabaseManagerHelper).saveConfiguration(mCurrencyModel, TABLE_CONFIGURATION);
+        Mockito.verify(mDatabaseManagerHelper).saveConfiguration(SourceString.CONFIGURATION_COLOMN, mCurrencyModel);
         Mockito.verify(this.view).showAllCurrency(view);
     }
 }

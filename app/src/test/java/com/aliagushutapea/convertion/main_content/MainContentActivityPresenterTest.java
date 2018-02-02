@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,6 @@ public class MainContentActivityPresenterTest {
     MainContentActivityContract.View view;
     CurrencyModel currencyModel;
     DatabaseManagerHelper databaseManagerHelper;
-    public static final String TABLE_CONFIGURATION = "configuration";
     Context context;
 
     @Before
@@ -51,12 +51,6 @@ public class MainContentActivityPresenterTest {
     }
 
     @Test
-    public void shouldShowFragmentAddCurrency() throws Exception {
-        mPresenter.addCurrency();
-        Mockito.verify(view).attachFragmentAddCurrency();
-    }
-
-    @Test
     public void shouldInspecDatabase() throws Exception {
         mPresenter.inspectDatabase();
         Mockito.verify(view).inspecDatabase();
@@ -66,6 +60,6 @@ public class MainContentActivityPresenterTest {
     public void shoudSaveConfiguration() throws Exception {
         mPresenter.saveConfiguration();
         assertTrue(currencyModel.getValueConfiguration().equals("navigation"));
-        Mockito.verify(databaseManagerHelper).saveConfiguration(currencyModel, TABLE_CONFIGURATION);
+        Mockito.verify(databaseManagerHelper).saveConfiguration(SourceString.CONFIGURATION_COLOMN, currencyModel);
     }
 }

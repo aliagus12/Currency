@@ -64,7 +64,7 @@ implements View.OnClickListener {
                 ViewHolderContent viewHolderContent = (ViewHolderContent) holder;
                 CurrencyModel currencyModel = listCurrency.get(position);
                 DatabaseManagerHelper helper = DatabaseManagerHelper.getInstance(context);
-                String value = helper.fetchConfiguration(
+                String value = helper.getConfiguration(
                         SourceString.CONFIGURATION_COLOMN,
                         KEY
                 );
@@ -102,7 +102,11 @@ implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        mListener.onHolderClick(view);
+        if (view.getTag(R.integer.key).equals("content")){
+            mListener.onHolderClick(view);
+        } else if (view.getTag(R.integer.key).equals("navigation")){
+            mListener.onHolderClickToDetail(view);
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -156,5 +160,7 @@ implements View.OnClickListener {
 
     public interface ListenerAdapterCurrencyExchange {
         void onHolderClick(View view);
+
+        void onHolderClickToDetail(View view);
     }
 }

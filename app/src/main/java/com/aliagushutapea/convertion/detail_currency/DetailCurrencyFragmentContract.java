@@ -17,10 +17,11 @@ public interface DetailCurrencyFragmentContract {
     interface Presenter extends BasePresenter {
 
         void saveDataCurrencyToDataBase(
-                String idCurrency,
-                String nameCurrency,
-                String countryCurrency,
-                String valueCurrency,
+                String symbol,
+                String name,
+                String countryName,
+                String symbolNative,
+                String imageCountry,
                 String imagePathCurrency
         );
     }

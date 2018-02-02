@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +26,6 @@ public class MainActivityPresenterTest {
    Context context;
    DatabaseManagerHelper databaseManagerHelper;
    CurrencyModel currencyModel;
-    public static final String TABLE_ALL_CURRENCY = "all_currency";
-    public static final String COL_SYMBOL = "Symbol";
 
     @Before
     public void setUp() throws Exception {
@@ -46,6 +45,6 @@ public class MainActivityPresenterTest {
     @Test
     public void shouldInsertDataToDatabase() throws Exception {
         mPresenter.insertDataToDatabase();
-        assertTrue(databaseManagerHelper.fetchAllCurrencyModelFromDatabaseManagerHelper(TABLE_ALL_CURRENCY, COL_SYMBOL).size() == 10);
+        assertTrue(databaseManagerHelper.getAllCurrencyFromDatabase(SourceString.ALL_CURRENCY_COLOMN).size() == 10);
     }
 }

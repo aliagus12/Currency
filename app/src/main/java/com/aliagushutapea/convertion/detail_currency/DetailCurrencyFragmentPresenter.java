@@ -2,6 +2,7 @@ package com.aliagushutapea.convertion.detail_currency;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import javax.inject.Inject;
 
@@ -13,8 +14,6 @@ public class DetailCurrencyFragmentPresenter implements DetailCurrencyFragmentCo
 
     DetailCurrencyFragmentContract.View view;
     CurrencyModel currencyModel;
-    public static final String COL_CURRENCY_ID = "currencyId";
-
     private DatabaseManagerHelper databaseManagerHelper;
 
     @Inject
@@ -41,25 +40,24 @@ public class DetailCurrencyFragmentPresenter implements DetailCurrencyFragmentCo
 
     @Override
     public void saveDataCurrencyToDataBase(
-            String idCurrency,
-            String nameCurrency,
+            String symbol,
+            String name,
             String countryName,
-            String imagePathCountry,
+            String symbolNative,
+            String imageCountry,
             String imagePathCurrency
     ) {
-        /*currencyModel.setCountry(countryName);
+        currencyModel.setSymbol(symbol);
+        currencyModel.setName(name);
+        currencyModel.setCountry(countryName);
+        currencyModel.setSymbolNative(symbolNative);
+        currencyModel.setImageCountry(imageCountry);
         currencyModel.setImageCurrency(imagePathCurrency);
-        boolean isExist = databaseManagerHelper.isCurrencyIdExists(
-                idCurrency,
-                "currency",
-                COL_CURRENCY_ID
+        databaseManagerHelper.insertCurrencyToDataBase(
+                SourceString.ALL_CURRENCY_COLOMN,
+                currencyModel
         );
-        if (isExist) {
-            view.makeToast(R.string.data_exists);
-        } else {
-            databaseManagerHelper.addCurrency(currencyModel);
-            view.dismissDialog();
-        }*/
+        view.dismissDialog();
 
     }
 }

@@ -1,4 +1,4 @@
-package com.aliagushutapea.convertion.money_exchange;
+package com.aliagushutapea.convertion.currency_exchange;
 
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.base.BasePresenter;
@@ -8,7 +8,7 @@ import com.aliagushutapea.convertion.base.BaseView;
  * Created by ali on 07/01/18.
  */
 
-public interface MoneyExchangeFragmentContract {
+public interface CurrencyExchangeFragmentContract {
 
     interface View extends BaseView {
 

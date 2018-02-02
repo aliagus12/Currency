@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,9 +27,6 @@ public class ShowAllListCurrencyFragmentPresenterTest {
     DatabaseManagerHelper databaseManagerHelper;
     Context context;
     CurrencyModel currencyModel;
-    private static final String TABLE_CURRENCY_TARGET = "currencyTarget";
-    private static final String TABLE_CURRENCY_RESULT = "currencyResult";
-    public static final String COL_CURRENCY_ID = "currencyId";
 
     @Before
     public void setUp() throws Exception {
@@ -51,7 +49,7 @@ public class ShowAllListCurrencyFragmentPresenterTest {
         List<Integer> listType = new ArrayList<>();
         listType.add(1);
         listType.add(1);
-        Mockito.when(databaseManagerHelper.fetchAllCurrencyModelFromDatabaseManagerHelper(TABLE_CURRENCY, COL_CURRENCY_ID))
+        Mockito.when(databaseManagerHelper.getAllCurrencyFromDatabase(SourceString.ALL_CURRENCY_COLOMN))
                 .thenReturn(modelList);
 
         mPresenter.loadListCurrency();
@@ -63,9 +61,8 @@ public class ShowAllListCurrencyFragmentPresenterTest {
         String filter = "target";
         mPresenter.saveCurrencyModelToDatabase(currencyModel, filter);
         Mockito.verify(databaseManagerHelper).saveCurrencyToTargetOrResult(
-                currencyModel,
-                TABLE_CURRENCY_TARGET,
-                COL_CURRENCY_ID
+                SourceString.TARGET_CURRENCY_COLOMN,
+                currencyModel
         );
     }
 
@@ -74,9 +71,8 @@ public class ShowAllListCurrencyFragmentPresenterTest {
         String filter = "result";
         mPresenter.saveCurrencyModelToDatabase(currencyModel, filter);
         Mockito.verify(databaseManagerHelper).saveCurrencyToTargetOrResult(
-                currencyModel,
-                TABLE_CURRENCY_RESULT,
-                COL_CURRENCY_ID
+                SourceString.RESULT_CURRENCY_COLOMN,
+                currencyModel
         );
     }
 }
