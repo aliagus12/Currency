@@ -1,9 +1,7 @@
-package com.aliagushutapea.convertion.money_exchange;
+package com.aliagushutapea.convertion.currency_exchange;
 
 import android.view.View;
 
-import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentContract;
-import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentPresenter;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.utils.SourceString;
@@ -41,6 +39,7 @@ public class CurrencyExchangeFragmentPresenterTest {
         view = Mockito.mock(CurrencyExchangeFragmentContract.View.class);
         mCurrencyModel = new CurrencyModel();
         presenter = new CurrencyExchangeFragmentPresenter(
+
                 view,
                 mCurrencyModel,
                 mDatabaseManagerHelper
@@ -65,7 +64,6 @@ public class CurrencyExchangeFragmentPresenterTest {
     @Test
     public void showListCurrency() throws Exception {
         View view = Mockito.mock(View.class);
-
         presenter.showListCurrency(view);
         assertTrue(mCurrencyModel.getValueConfiguration().equals("content"));
         Mockito.verify(mDatabaseManagerHelper).saveConfiguration(SourceString.CONFIGURATION_COLOMN, mCurrencyModel);

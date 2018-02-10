@@ -427,7 +427,7 @@
         "rounding": 0,
         "code": "HKD",
         "name_plural": "Hong Kong dollars",
-"flag": "hongkong"
+"flag": "hk"
     },
      {
         "symbol": "HNL",
@@ -567,7 +567,7 @@
         "rounding": 0,
         "code": "KHR",
         "name_plural": "Cambodian riels",
-"flag": "cambodja"
+"flag": "kh"
     },
     {
         "symbol": "CF",
@@ -577,7 +577,7 @@
         "rounding": 0,
         "code": "KMF",
         "name_plural": "Comorian francs",
-"flag": "comoros"
+"flag": "km"
     },
     {
         "symbol": "₩",
@@ -717,7 +717,7 @@
         "rounding": 0,
         "code": "MOP",
         "name_plural": "Macanese patacas",
-"flag": "macanese"
+"flag": "mo"
     },
     {
         "symbol": "MURs",
@@ -1137,7 +1137,7 @@
         "rounding": 0,
         "code": "XAF",
         "name_plural": "CFA francs BEAC",
-"flag": ""
+"flag": "ga"
     },
     {
         "symbol": "CFA",
@@ -1147,7 +1147,7 @@
         "rounding": 0,
         "code": "XOF",
         "name_plural": "CFA francs BCEAO",
-"flag": ""
+"flag": "gw"
     },
     {
         "symbol": "YR",

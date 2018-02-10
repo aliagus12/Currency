@@ -109,6 +109,15 @@ implements View.OnClickListener {
         }
     }
 
+    public void refresh(
+            List<CurrencyModel> currencyModelList,
+            List<Integer> listType
+    ) {
+        this.listCurrency = currencyModelList;
+        this.listTypes = listType;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageCountry;
         private final TextView txtNameCurrency;

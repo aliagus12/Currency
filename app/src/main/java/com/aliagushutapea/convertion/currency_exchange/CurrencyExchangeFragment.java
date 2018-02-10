@@ -4,6 +4,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +14,11 @@ import android.widget.Toast;
 
 import com.aliagushutapea.convertion.MainApplication;
 import com.aliagushutapea.convertion.R;
-import com.aliagushutapea.convertion.databinding.FragmentMoneyExchangerBinding;
+import com.aliagushutapea.convertion.databinding.FragmentCurrencyExchangerBinding;
 import com.aliagushutapea.convertion.dependencyinjection.component_mpv.DaggerMoneyExchangeComponent;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.MoneyExchangeFragmentPresenterModule;
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragment;
-import com.aliagushutapea.convertion.utils.AutoResizeTextView;
 import com.bumptech.glide.Glide;
 
 import javax.inject.Inject;
@@ -34,8 +35,9 @@ public class CurrencyExchangeFragment extends Fragment implements CurrencyExchan
     public static final int LOADING = 2;
     @Inject
     CurrencyExchangeFragmentPresenter presenter;
-    FragmentMoneyExchangerBinding binding;
+    FragmentCurrencyExchangerBinding binding;
     private Toast toast;
+
 
     public CurrencyExchangeFragment() {
     }
@@ -59,7 +61,7 @@ public class CurrencyExchangeFragment extends Fragment implements CurrencyExchan
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(
                 inflater,
-                R.layout.fragment_money_exchanger,
+                R.layout.fragment_currency_exchanger,
                 container,
                 false
         );
@@ -82,6 +84,27 @@ public class CurrencyExchangeFragment extends Fragment implements CurrencyExchan
     public void onResume() {
         super.onResume();
         presenter.loadData();
+        inputNumber();
+    }
+
+    private void inputNumber() {
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                presenter.onNumberChanges(charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        binding.edtTargetCurrency.addTextChangedListener(textWatcher);
     }
 
     @Override
@@ -110,7 +133,6 @@ public class CurrencyExchangeFragment extends Fragment implements CurrencyExchan
 
     @Override
     public void loadDataToView(CurrencyModel target, CurrencyModel result) {
-        setTextViewResult(result);
         binding.nameCurrencyTarget.setText(target.getSymbol());
         binding.nameCurrencyResult.setText(result.getSymbol());
         setImageView(binding.imageMoneyTarget, target);
@@ -125,11 +147,9 @@ public class CurrencyExchangeFragment extends Fragment implements CurrencyExchan
                 .into(imageView);
     }
 
-    private void setTextViewResult(CurrencyModel result) {
-        AutoResizeTextView autoResizeTextView = (AutoResizeTextView) getView().findViewById(R.id.txtCurrencyResult);
-        autoResizeTextView.setMinTextSize(26.f);
-        //autoResizeTextView.setText(result.getCurrencyName());
-        autoResizeTextView.resizeText();
+    @Override
+    public void setTextViewResult(String result) {
+        binding.txtCurrencyResult.setText(result);
     }
 
 }

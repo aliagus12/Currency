@@ -6,16 +6,23 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
-import android.util.Log;
 
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.model.ResultModel;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by ali on 25/01/18.
@@ -53,20 +60,21 @@ public class DatabaseManagerHelper extends DatabaseHelper {
             CurrencyModel currencyModel
     ) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(arrayColomn[1], currencyModel.getSymbol());
-        contentValues.put(arrayColomn[2], currencyModel.getName());
-        contentValues.put(arrayColomn[3], currencyModel.getCountry());
-        contentValues.put(arrayColomn[4], currencyModel.getSymbolNative());
-        contentValues.put(arrayColomn[5], currencyModel.getImageCountry());
-        contentValues.put(arrayColomn[6], currencyModel.getImageCurrency());
+        contentValues.put(arrayColomn[1], currencyModel.getId());
+        contentValues.put(arrayColomn[2], currencyModel.getSymbol());
+        contentValues.put(arrayColomn[3], currencyModel.getName());
+        contentValues.put(arrayColomn[4], currencyModel.getCountry());
+        contentValues.put(arrayColomn[5], currencyModel.getSymbolNative());
+        contentValues.put(arrayColomn[6], currencyModel.getImageCountry());
+        contentValues.put(arrayColomn[7], currencyModel.getImageCurrency());
         CurrencyModel model = getCurrencyModelByKey(
                 arrayColomn,
-                currencyModel.getSymbol()
+                currencyModel.getId()
         );
         SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        if (model.getSymbol() != null && !model.getSymbol().equals("")) {
+        if (model.getId() != null && !model.getId().equals("")) {
             String where = arrayColomn[1] + " = ?";
-            String[] args = new String[]{currencyModel.getSymbol()};
+            String[] args = new String[]{currencyModel.getId()};
             sqLiteDatabase.update(arrayColomn[0], contentValues, where, args);
         } else {
             sqLiteDatabase.insert(arrayColomn[0], null, contentValues);
@@ -146,14 +154,15 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         CurrencyModel currencyModel = new CurrencyModel();
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            currencyModel.setSymbol(cursor.getString(cursor.getColumnIndex(arrayColomn[1])));
-            currencyModel.setName(cursor.getString(cursor.getColumnIndex(arrayColomn[2])));
-            currencyModel.setCountry(cursor.getString(cursor.getColumnIndex(arrayColomn[3])));
-            currencyModel.setSymbolNative(cursor.getString(cursor.getColumnIndex(arrayColomn[4])));
-            currencyModel.setImageCountry(cursor.getString(cursor.getColumnIndex(arrayColomn[5])));
-            Log.d(TAG, "colomn " + arrayColomn[6]);
-            currencyModel.setImageCurrency(cursor.getString(cursor.getColumnIndex(arrayColomn[6])));
+            currencyModel.setId(cursor.getString(cursor.getColumnIndex(arrayColomn[1])));
+            currencyModel.setSymbol(cursor.getString(cursor.getColumnIndex(arrayColomn[2])));
+            currencyModel.setName(cursor.getString(cursor.getColumnIndex(arrayColomn[3])));
+            currencyModel.setCountry(cursor.getString(cursor.getColumnIndex(arrayColomn[4])));
+            currencyModel.setSymbolNative(cursor.getString(cursor.getColumnIndex(arrayColomn[5])));
+            currencyModel.setImageCountry(cursor.getString(cursor.getColumnIndex(arrayColomn[6])));
+            currencyModel.setImageCurrency(cursor.getString(cursor.getColumnIndex(arrayColomn[7])));
         } else {
+            currencyModel.setId("");
             currencyModel.setSymbol("");
             currencyModel.setName("");
             currencyModel.setCountry("");
@@ -163,6 +172,24 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         }
         cursor.close();
         return currencyModel;
+    }
+
+    public Observable<List<CurrencyModel>> getObservableAllCurrencyFromDatabase(String[] arrayColomn) {
+        return makeObservable(arrayColomn)
+                .subscribeOn(Schedulers.io());
+    }
+
+    private Observable<List<CurrencyModel>> makeObservable(final String[] arrayColomn) {
+        return Observable.create(new ObservableOnSubscribe<List<CurrencyModel>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<CurrencyModel>> e) throws Exception {
+                try {
+                    e.onNext(getAllCurrencyFromDatabase(arrayColomn));
+                } catch (Exception ex) {
+                    e.onError(ex);
+                }
+            }
+        });
     }
 
     public List<CurrencyModel> getAllCurrencyFromDatabase(String[] arrayColomn) {
@@ -184,6 +211,28 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         return currencyModelList;
     }
 
+    public JSONObject getAllCurrencyValueFromDatabase(String[] arrayStrings) {
+        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
+        String selectQuery = "SELECT * FROM " + arrayStrings[0];
+        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
+        JSONObject jsonObjectValue = new JSONObject();
+        List<String> listSymbolValue = getListSymbolCurrency(arrayStrings);
+        if (cursor.getCount() > 0) {
+            for (String symbol : listSymbolValue) {
+                ResultModel resultModel = getResultModelByKey(
+                        arrayStrings,
+                        symbol
+                );
+                try {
+                    jsonObjectValue.put(resultModel.getSymbol(), resultModel.getValue());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return jsonObjectValue;
+    }
+
     private List<String> getListSymbolCurrency(String[] arrayColomn) {
         SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
         String selectQuery = "SELECT * FROM " + arrayColomn[0];
@@ -198,6 +247,27 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         }
         cursor.close();
         return listIdCurrency;
+    }
+
+    private ResultModel getResultModelByKey(
+            String[] arrayStrings,
+            String symbol
+    ) {
+        SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
+        String selectQuery = "SELECT * FROM " + arrayStrings[0] + " WHERE "
+                + arrayStrings[1] + " = '" + symbol + "'";
+        Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
+        ResultModel resultModel = new ResultModel();
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            resultModel.setSymbol(cursor.getString(cursor.getColumnIndex(arrayStrings[1])));
+            resultModel.setValue(cursor.getString(cursor.getColumnIndex(arrayStrings[2])));
+        } else {
+            resultModel.setSymbol("0");
+            resultModel.setValue("0");
+        }
+        cursor.close();
+        return resultModel;
     }
 
     private long getCountAllRow() {
@@ -231,7 +301,12 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
         String createNewTable = "CREATE TABLE IF NOT EXISTS "
                 + nameTable +
-                "(" + COL_NAMECURRENCY_THAT_WANT_TO_COMPARED + " TEXT, " + COL_VALUE_THAT_COMPARED + " TEXT)";
+                "("
+                + COL_NAMECURRENCY_THAT_WANT_TO_COMPARED +
+                " VARCHAR(100), "
+                + COL_VALUE_THAT_COMPARED +
+                " VARCHAR(100)"
+                + ")";
         sqLiteDatabase.execSQL(createNewTable);
     }
 
@@ -240,15 +315,15 @@ public class DatabaseManagerHelper extends DatabaseHelper {
             CurrencyModel currencyModel
     ) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(arrayColomn[1], currencyModel.getSymbol());
-        contentValues.put(arrayColomn[2], currencyModel.getName());
-        contentValues.put(arrayColomn[3], currencyModel.getCountry());
-        contentValues.put(arrayColomn[4], currencyModel.getSymbolNative());
-        contentValues.put(arrayColomn[5], currencyModel.getImageCountry());
-        contentValues.put(arrayColomn[6], currencyModel.getImageCurrency());
+        contentValues.put(arrayColomn[1], currencyModel.getId());
+        contentValues.put(arrayColomn[2], currencyModel.getSymbol());
+        contentValues.put(arrayColomn[3], currencyModel.getName());
+        contentValues.put(arrayColomn[4], currencyModel.getCountry());
+        contentValues.put(arrayColomn[5], currencyModel.getSymbolNative());
+        contentValues.put(arrayColomn[6], currencyModel.getImageCountry());
+        contentValues.put(arrayColomn[7], currencyModel.getImageCurrency());
         boolean isHaveField = getListSymbolCurrency(arrayColomn).size() > 0 ? true : false;
         SQLiteDatabase sqLiteDatabase = databaseManager.openDatabase(TAG);
-        Log.d(TAG, "isHave"+ isHaveField);
         if (isHaveField) {
             String oldCurrencyId = getListSymbolCurrency(arrayColomn).get(0);
             String where = arrayColomn[1] + " = ?";
@@ -283,7 +358,7 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         boolean isHaveField = getListSymbolCurrency(arrayColomn).size() > 0 ? true : false;
         if (isHaveField) {
             String oldCurrencyId = getListSymbolCurrency(arrayColomn).get(0);
-            String where = ConfigurationColomn.COL_KEY + " = ?";
+            String where = arrayColomn[1] + " = ?";
             String[] args = new String[]{oldCurrencyId};
             sqLiteDatabase.update(arrayColomn[0], contentValues, where, args);
         } else {
@@ -321,6 +396,8 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         String query = "INSERT OR REPLACE INTO "
                 + AllCurrencyColomn.TABLE_ALL_CURRENCY +
                 " ( "
+                + AllCurrencyColomn.COL_ID +
+                ", "
                 + AllCurrencyColomn.COL_SYMBOL +
                 ", "
                 + AllCurrencyColomn.COL_NAME +
@@ -333,18 +410,19 @@ public class DatabaseManagerHelper extends DatabaseHelper {
                 ", "
                 + AllCurrencyColomn.COL_IMAGE_CURRENCY +
                 ") "
-                + "VALUES (?, ?, ?, ?, ?, ?) ";
+                + "VALUES (?, ?, ?, ?, ?, ?, ?) ";
         try {
             db.beginTransaction();
             SQLiteStatement stmt = db.compileStatement(query);
             for (JSONObject jsonObjectDataCurrency : listAllDataCurrency) {
                 stmt.clearBindings();
-                stmt.bindString(1, jsonObjectDataCurrency.getString("symbol"));
-                stmt.bindString(2, jsonObjectDataCurrency.getString("name"));
-                stmt.bindString(3, "-");
-                stmt.bindString(4, jsonObjectDataCurrency.getString("symbol_native"));
-                stmt.bindString(5, jsonObjectDataCurrency.getString("flag_uri"));
-                stmt.bindString(6, "-");
+                stmt.bindString(1, jsonObjectDataCurrency.getString("id"));
+                stmt.bindString(2, jsonObjectDataCurrency.getString("symbol"));
+                stmt.bindString(3, jsonObjectDataCurrency.getString("name"));
+                stmt.bindString(4, jsonObjectDataCurrency.getString("country"));
+                stmt.bindString(5, jsonObjectDataCurrency.getString("symbol_native"));
+                stmt.bindString(6, jsonObjectDataCurrency.getString("flag_uri"));
+                stmt.bindString(7, jsonObjectDataCurrency.getString("currency_uri"));
                 stmt.execute();
             }
             db.setTransactionSuccessful();
@@ -355,4 +433,41 @@ public class DatabaseManagerHelper extends DatabaseHelper {
         }
     }
 
+    public void bulkInsertDataValueCurrencyToDatabase(
+            String nameTable,
+            JSONArray jsonArray,
+            List<String> listKeys
+    ) throws JSONException {
+        List<JSONObject> listAllDataCurrency = new ArrayList<>();
+        for (int a = 0; a < jsonArray.length(); a++) {
+            listAllDataCurrency.add(jsonArray.getJSONObject(a));
+        }
+        SQLiteDatabase db = databaseManager.openDatabase(TAG);
+        String query = "INSERT OR REPLACE INTO "
+                + nameTable +
+                " ( "
+                + COL_NAMECURRENCY_THAT_WANT_TO_COMPARED +
+                ", "
+                + COL_VALUE_THAT_COMPARED +
+                ") "
+                + "VALUES (?, ?) ";
+        try {
+            db.beginTransaction();
+            SQLiteStatement stmt = db.compileStatement(query);
+
+            for (int a = 0; a < listKeys.size(); a++) {
+                JSONObject jsonObject = listAllDataCurrency.get(a);
+                String value = jsonObject.getString(listKeys.get(a));
+                stmt.clearBindings();
+                stmt.bindString(1, listKeys.get(a));
+                stmt.bindString(2, value);
+                stmt.execute();
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
+    }
 }

@@ -1,10 +1,8 @@
-package com.aliagushutapea.convertion.add_currency;
+package com.aliagushutapea.convertion.detail_currency;
 
 import android.content.Context;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
-import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragmentContract;
-import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragmentPresenter;
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.utils.SourceString;
 
@@ -45,6 +43,7 @@ public class DetailCurrencyFragmentPresenterTest {
 
     @Test
     public void shouldSaveDataCurrencyToDatabase() throws Exception {
+        String id = "fake id";
         String symbol = "fake symbol";
         String name = "fake name";
         String countryName = "fake countryName";
@@ -52,6 +51,7 @@ public class DetailCurrencyFragmentPresenterTest {
         String imageCountry = "fake imageCountry";
         String imageCurrency = "fake imageCurrency";
         mPresenter.saveDataCurrencyToDataBase(
+                id,
                 symbol,
                 name,
                 countryName,
@@ -59,6 +59,7 @@ public class DetailCurrencyFragmentPresenterTest {
                 imageCountry,
                 imageCurrency
         );
+        assertTrue(mCurrencyModel.getId().equals(id));
         assertTrue(mCurrencyModel.getSymbol().equals(symbol));
         assertTrue(mCurrencyModel.getName().equals(name));
         assertTrue(mCurrencyModel.getCountry().equals(countryName));

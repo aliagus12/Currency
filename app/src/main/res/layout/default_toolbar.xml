@@ -4,14 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/default_toolbar"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#910fde65"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:subtitleTextAppearance="@style/ToolbarSubtitleAppearance"
-        app:theme="@style/AppThemeToolbar"
-        app:titleTextColor="@color/white_text" />
+        android:layout_height="wrap_content"
+        android:theme="@style/AppThemeToolbar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/default_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#0cdaa0"
+            android:theme="@style/AppThemeToolbar"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
 
 </android.support.constraint.ConstraintLayout>

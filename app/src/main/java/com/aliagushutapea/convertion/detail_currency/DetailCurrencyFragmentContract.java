@@ -22,7 +22,8 @@ public interface DetailCurrencyFragmentContract {
                 String countryName,
                 String symbolNative,
                 String imageCountry,
-                String imagePathCurrency
+                String imagePathCurrency,
+                String code
         );
     }
 }

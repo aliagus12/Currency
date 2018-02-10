@@ -5,6 +5,7 @@ import android.content.Context;
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.ApplicationModuleMVP;
+import com.aliagushutapea.convertion.utils.CurrencyUtils;
 
 import dagger.Component;
 
@@ -19,5 +20,7 @@ public interface ApplicationComponentMVP {
     CurrencyModel currencyModel();
 
     DatabaseManagerHelper databaseManagerHelper();
+
+    CurrencyUtils currencyUtils();
 
 }

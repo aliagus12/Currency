@@ -1,0 +1,1546 @@
+[
+  {
+    "alpha3": "AFG",
+    "symbol": "AFN",
+    "name": "Afghan afghani",
+    "symbol_native": "؋",
+    "id": "AF",
+    "country": "Afghanistan"
+  },
+  {
+    "alpha3": "AIA",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "AI",
+    "country": "Anguilla"
+  },
+  {
+    "alpha3": "AUS",
+    "symbol": "AUD",
+    "name": "Australian dollar",
+    "symbol_native": "$",
+    "id": "AU",
+    "country": "Australia"
+  },
+  {
+    "symbol": "BDT",
+    "name": "Bangladeshi taka",
+    "country": "Bangladesh",
+    "alpha3": "BGD",
+    "id": "BD"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Benin",
+    "alpha3": "BEN",
+    "id": "BJ"
+  },
+  {
+    "alpha3": "BRA",
+    "symbol": "BRL",
+    "name": "Brazilian real",
+    "symbol_native": "R$",
+    "id": "BR",
+    "country": "Brazil"
+  },
+  {
+    "alpha3": "KHM",
+    "symbol": "KHR",
+    "name": "Cambodian riel",
+    "symbol_native": "៛",
+    "id": "KH",
+    "country": "Cambodia"
+  },
+  {
+    "symbol": "XAF",
+    "name": "Central African CFA franc",
+    "country": "Chad",
+    "alpha3": "TCD",
+    "id": "TD"
+  },
+  {
+    "symbol": "XAF",
+    "name": "Central African CFA franc",
+    "country": "Congo",
+    "alpha3": "COG",
+    "id": "CG"
+  },
+  {
+    "symbol": "CUP",
+    "name": "Cuban peso",
+    "symbol_native": "$",
+    "country": "Cuba",
+    "alpha3": "CUB",
+    "id": "CU"
+  },
+  {
+    "alpha3": "DMA",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "DM",
+    "country": "Dominica"
+  },
+  {
+    "alpha3": "FIN",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "FI",
+    "country": "Finland"
+  },
+  {
+    "symbol": "GEL",
+    "name": "Georgian lari",
+    "country": "Georgia",
+    "alpha3": "GEO",
+    "id": "GE"
+  },
+  {
+    "alpha3": "GRD",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "GD",
+    "country": "Grenada"
+  },
+  {
+    "symbol": "HTG",
+    "name": "Haitian gourde",
+    "country": "Haiti",
+    "alpha3": "HTI",
+    "id": "HT"
+  },
+  {
+    "alpha3": "IND",
+    "symbol": "INR",
+    "name": "Indian rupee",
+    "symbol_native": "₹",
+    "id": "IN",
+    "country": "India"
+  },
+  {
+    "alpha3": "ISR",
+    "symbol": "ILS",
+    "name": "Israeli new sheqel",
+    "symbol_native": "₪",
+    "id": "IL",
+    "country": "Israel"
+  },
+  {
+    "alpha3": "KAZ",
+    "symbol": "KZT",
+    "name": "Kazakhstani tenge",
+    "symbol_native": "лв",
+    "id": "KZ",
+    "country": "Kazakhstan"
+  },
+  {
+    "symbol": "KWD",
+    "name": "Kuwaiti dinar",
+    "country": "Kuwait",
+    "alpha3": "KWT",
+    "id": "KW"
+  },
+  {
+    "symbol": "LSL",
+    "name": "Lesotho loti",
+    "country": "Lesotho",
+    "alpha3": "LSO",
+    "id": "LS"
+  },
+  {
+    "alpha3": "LUX",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "LU",
+    "country": "Luxembourg"
+  },
+  {
+    "alpha3": "MYS",
+    "symbol": "MYR",
+    "name": "Malaysian ringgit",
+    "symbol_native": "RM",
+    "id": "MY",
+    "country": "Malaysia"
+  },
+  {
+    "alpha3": "MUS",
+    "symbol": "MUR",
+    "name": "Mauritian rupee",
+    "symbol_native": "₨",
+    "id": "MU",
+    "country": "Mauritius"
+  },
+  {
+    "alpha3": "MNG",
+    "symbol": "MNT",
+    "name": "Mongolian tugrik",
+    "symbol_native": "₮",
+    "id": "MN",
+    "country": "Mongolia"
+  },
+  {
+    "symbol": "MMK",
+    "name": "Myanma kyat",
+    "country": "Myanmar",
+    "alpha3": "MMR",
+    "id": "MM"
+  },
+  {
+    "symbol": "XPF",
+    "name": "CFP franc",
+    "country": "New Caledonia",
+    "alpha3": "NCL",
+    "id": "NC"
+  },
+  {
+    "alpha3": "NOR",
+    "symbol": "NOK",
+    "name": "Norwegian krone",
+    "symbol_native": "kr",
+    "id": "NO",
+    "country": "Norway"
+  },
+  {
+    "symbol": "PGK",
+    "name": "Papua New Guinean kina",
+    "country": "Papua New Guinea",
+    "alpha3": "PNG",
+    "id": "PG"
+  },
+  {
+    "alpha3": "PRT",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "PT",
+    "country": "Portugal"
+  },
+  {
+    "symbol": "RWF",
+    "name": "Rwandan franc",
+    "country": "Rwanda",
+    "alpha3": "RWA",
+    "id": "RW"
+  },
+  {
+    "symbol": "WST",
+    "name": "Samoan tala",
+    "country": "Samoa (Western)",
+    "alpha3": "WSM",
+    "id": "WS"
+  },
+  {
+    "alpha3": "SRB",
+    "symbol": "RSD",
+    "name": "Serbian dinar",
+    "symbol_native": "Дин.",
+    "id": "RS",
+    "country": "Serbia"
+  },
+  {
+    "alpha3": "SVN",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "SI",
+    "country": "Slovenia"
+  },
+  {
+    "alpha3": "ESP",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "ES",
+    "country": "Spain"
+  },
+  {
+    "alpha3": "SWE",
+    "symbol": "SEK",
+    "name": "Swedish krona",
+    "symbol_native": "kr",
+    "id": "SE",
+    "country": "Sweden"
+  },
+  {
+    "alpha3": "TZA",
+    "symbol": "TZS",
+    "name": "Tanzanian shilling",
+    "symbol_native": "TSh",
+    "id": "TZ",
+    "country": "Tanzania"
+  },
+  {
+    "symbol": "TND",
+    "name": "Tunisian dinar",
+    "country": "Tunisia",
+    "alpha3": "TUN",
+    "id": "TN"
+  },
+  {
+    "alpha3": "UKR",
+    "symbol": "UAH",
+    "name": "Ukrainian hryvnia",
+    "symbol_native": "₴",
+    "id": "UA",
+    "country": "Ukraine"
+  },
+  {
+    "alpha3": "UZB",
+    "symbol": "UZS",
+    "name": "Uzbekistani som",
+    "symbol_native": "лв",
+    "id": "UZ",
+    "country": "Uzbekistan"
+  },
+  {
+    "alpha3": "YEM",
+    "symbol": "YER",
+    "name": "Yemeni rial",
+    "symbol_native": "﷼",
+    "id": "YE",
+    "country": "Yemen"
+  },
+  {
+    "symbol": "DZD",
+    "name": "Algerian dinar",
+    "country": "Algeria",
+    "alpha3": "DZA",
+    "id": "DZ"
+  },
+  {
+    "alpha3": "ARG",
+    "symbol": "ARS",
+    "name": "Argentine peso",
+    "symbol_native": "$",
+    "id": "AR",
+    "country": "Argentina"
+  },
+  {
+    "alpha3": "AZE",
+    "symbol": "AZN",
+    "name": "Azerbaijani manat",
+    "symbol_native": "ман",
+    "id": "AZ",
+    "country": "Azerbaijan"
+  },
+  {
+    "alpha3": "BLR",
+    "symbol": "BYR",
+    "name": "Belarusian ruble",
+    "symbol_native": "p.",
+    "id": "BY",
+    "country": "Belarus"
+  },
+  {
+    "alpha3": "BOL",
+    "symbol": "BOB",
+    "name": "Bolivian boliviano",
+    "symbol_native": "$b",
+    "id": "BO",
+    "country": "Bolivia"
+  },
+  {
+    "alpha3": "BGR",
+    "symbol": "BGN",
+    "name": "Bulgarian lev",
+    "symbol_native": "лв",
+    "id": "BG",
+    "country": "Bulgaria"
+  },
+  {
+    "alpha3": "CAN",
+    "symbol": "CAD",
+    "name": "Canadian dollar",
+    "symbol_native": "$",
+    "id": "CA",
+    "country": "Canada"
+  },
+  {
+    "alpha3": "CHN",
+    "symbol": "CNY",
+    "name": "Chinese renminbi",
+    "symbol_native": "¥",
+    "id": "CN",
+    "country": "China"
+  },
+  {
+    "alpha3": "CRI",
+    "symbol": "CRC",
+    "name": "Costa Rican colon",
+    "symbol_native": "₡",
+    "id": "CR",
+    "country": "Costa Rica"
+  },
+  {
+    "alpha3": "CZE",
+    "symbol": "CZK",
+    "name": "Czech koruna",
+    "symbol_native": "Kč",
+    "id": "CZ",
+    "country": "Czech Republic"
+  },
+  {
+    "alpha3": "ECU",
+    "symbol": "USD",
+    "name": "United States dollar",
+    "symbol_native": "$",
+    "id": "EC",
+    "country": "Ecuador"
+  },
+  {
+    "alpha3": "EST",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "EE",
+    "country": "Estonia"
+  },
+  {
+    "symbol": "XPF",
+    "name": "CFP franc",
+    "country": "French Polynesia",
+    "alpha3": "PYF",
+    "id": "PF"
+  },
+  {
+    "symbol": "GHS",
+    "name": "Ghanaian cedi",
+    "country": "Ghana",
+    "alpha3": "GHA",
+    "id": "GH"
+  },
+  {
+    "symbol": "GNF",
+    "name": "Guinean franc",
+    "country": "Guinea",
+    "alpha3": "GIN",
+    "id": "GN"
+  },
+  {
+    "alpha3": "HKG",
+    "symbol": "HKD",
+    "name": "Hong Kong dollar",
+    "symbol_native": "$",
+    "id": "HK",
+    "country": "Hong Kong"
+  },
+  {
+    "alpha3": "IRN",
+    "symbol": "IRR",
+    "name": "Iranian rial",
+    "symbol_native": "﷼",
+    "id": "IR",
+    "country": "Iran, Islamic Republic of"
+  },
+  {
+    "alpha3": "JAM",
+    "symbol": "JMD",
+    "name": "Jamaican dollar",
+    "symbol_native": "J$",
+    "id": "JM",
+    "country": "Jamaica"
+  },
+  {
+    "alpha3": "KIR",
+    "symbol": "AUD",
+    "name": "Australian dollar",
+    "symbol_native": "$",
+    "id": "KI",
+    "country": "Kiribati"
+  },
+  {
+    "alpha3": "LAO",
+    "symbol": "LAK",
+    "name": "Lao kip",
+    "symbol_native": "₭",
+    "id": "LA",
+    "country": "Laos"
+  },
+  {
+    "symbol": "LYD",
+    "name": "Libyan dinar",
+    "country": "Libya",
+    "alpha3": "LBY",
+    "id": "LY"
+  },
+  {
+    "alpha3": "MKD",
+    "symbol": "MKD",
+    "name": "Macedonian denar",
+    "symbol_native": "ден",
+    "id": "MK",
+    "country": "Macedonia (Former Yug. Rep.)"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Mali",
+    "alpha3": "MLI",
+    "id": "ML"
+  },
+  {
+    "alpha3": "FSM",
+    "symbol": "USD",
+    "name": "United States dollar",
+    "symbol_native": "$",
+    "id": "FM",
+    "country": "Micronesia"
+  },
+  {
+    "alpha3": "MSR",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "MS",
+    "country": "Montserrat"
+  },
+  {
+    "alpha3": "NRU",
+    "symbol": "AUD",
+    "name": "Australian dollar",
+    "symbol_native": "$",
+    "id": "NR",
+    "country": "Nauru"
+  },
+  {
+    "alpha3": "NIC",
+    "symbol": "NIO",
+    "name": "Nicaraguan cordoba",
+    "symbol_native": "C$",
+    "id": "NI",
+    "country": "Nicaragua"
+  },
+  {
+    "alpha3": "PAK",
+    "symbol": "PKR",
+    "name": "Pakistani rupee",
+    "symbol_native": "₨",
+    "id": "PK",
+    "country": "Pakistan"
+  },
+  {
+    "alpha3": "PER",
+    "symbol": "PEN",
+    "name": "Peruvian nuevo sol",
+    "symbol_native": "S/.",
+    "id": "PE",
+    "country": "Peru"
+  },
+  {
+    "alpha3": "QAT",
+    "symbol": "QAR",
+    "name": "Qatari riyal",
+    "symbol_native": "﷼",
+    "id": "QA",
+    "country": "Qatar"
+  },
+  {
+    "alpha3": "KNA",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "KN",
+    "country": "Saint Kitts and Nevis"
+  },
+  {
+    "symbol": "STD",
+    "name": "Sao Tome and Principe dobra",
+    "country": "Sao Tome and Principe",
+    "alpha3": "STP",
+    "id": "ST"
+  },
+  {
+    "symbol": "SLL",
+    "name": "Sierra Leonean leone",
+    "country": "Sierra Leone",
+    "alpha3": "SLE",
+    "id": "SL"
+  },
+  {
+    "alpha3": "SOM",
+    "symbol": "SOS",
+    "name": "Somali shilling",
+    "symbol_native": "S",
+    "id": "SO",
+    "country": "Somalia"
+  },
+  {
+    "symbol": "SDG",
+    "name": "Sudanese pound",
+    "country": "Sudan",
+    "alpha3": "SDN",
+    "id": "SD"
+  },
+  {
+    "alpha3": "SYR",
+    "symbol": "SYP",
+    "name": "Syrian pound",
+    "symbol_native": "£",
+    "id": "SY",
+    "country": "Syria"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Togo",
+    "alpha3": "TGO",
+    "id": "TG"
+  },
+  {
+    "symbol": "TMT",
+    "name": "Turkmenistan manat",
+    "country": "Turkmenistan",
+    "alpha3": "TKM",
+    "id": "TM"
+  },
+  {
+    "alpha3": "GBR",
+    "symbol": "GBP",
+    "name": "British pound",
+    "symbol_native": "£",
+    "id": "GB",
+    "country": "United Kingdom"
+  },
+  {
+    "symbol": "VEF",
+    "name": "Venezuelan bolivar",
+    "country": "Venezuela",
+    "alpha3": "VEN",
+    "id": "VE"
+  },
+  {
+    "alpha3": "AND",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "AD",
+    "country": "Andorra"
+  },
+  {
+    "symbol": "AMD",
+    "name": "Armenian dram",
+    "country": "Armenia",
+    "alpha3": "ARM",
+    "id": "AM"
+  },
+  {
+    "alpha3": "BHS",
+    "symbol": "BSD",
+    "name": "Bahamian dollar",
+    "symbol_native": "$",
+    "id": "BS",
+    "country": "Bahamas"
+  },
+  {
+    "alpha3": "BEL",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "BE",
+    "country": "Belgium"
+  },
+  {
+    "alpha3": "BIH",
+    "symbol": "BAM",
+    "name": "Bosnia and Herzegovina konvertibilna marka",
+    "symbol_native": "KM",
+    "id": "BA",
+    "country": "Bosnia-Herzegovina"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Burkina Faso",
+    "alpha3": "BFA",
+    "id": "BF"
+  },
+  {
+    "alpha3": "CYM",
+    "symbol": "KYD",
+    "name": "Cayman Islands dollar",
+    "symbol_native": "$",
+    "id": "KY",
+    "country": "Cayman Islands"
+  },
+  {
+    "alpha3": "COL",
+    "symbol": "COP",
+    "name": "Colombian peso",
+    "symbol_native": "$",
+    "id": "CO",
+    "country": "Colombia"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Côte d'Ivoire",
+    "alpha3": "CIV",
+    "id": "CI"
+  },
+  {
+    "alpha3": "DNK",
+    "symbol": "DKK",
+    "name": "Danish krone",
+    "symbol_native": "kr",
+    "id": "DK",
+    "country": "Denmark"
+  },
+  {
+    "alpha3": "EGY",
+    "symbol": "EGP",
+    "name": "Egyptian pound",
+    "symbol_native": "£",
+    "id": "EG",
+    "country": "Egypt"
+  },
+  {
+    "symbol": "ETB",
+    "name": "Ethiopian birr",
+    "country": "Ethiopia",
+    "alpha3": "ETH",
+    "id": "ET"
+  },
+  {
+    "symbol": "XAF",
+    "name": "Central African CFA franc",
+    "country": "Gabon",
+    "alpha3": "GAB",
+    "id": "GA"
+  },
+  {
+    "alpha3": "GIB",
+    "symbol": "GIP",
+    "name": "Gibraltar pound",
+    "symbol_native": "£",
+    "id": "GI",
+    "country": "Gibraltar"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Guinea-Bissau",
+    "alpha3": "GNB",
+    "id": "GW"
+  },
+  {
+    "alpha3": "HUN",
+    "symbol": "HUF",
+    "name": "Hungarian forint",
+    "symbol_native": "Ft",
+    "id": "HU",
+    "country": "Hungary"
+  },
+  {
+    "symbol": "IQD",
+    "name": "Iraqi dinar",
+    "country": "Iraq",
+    "alpha3": "IRQ",
+    "id": "IQ"
+  },
+  {
+    "alpha3": "JPN",
+    "symbol": "JPY",
+    "name": "Japanese yen",
+    "symbol_native": "¥",
+    "id": "JP",
+    "country": "Japan"
+  },
+  {
+    "alpha3": "PRK",
+    "symbol": "KPW",
+    "name": "North Korean won",
+    "symbol_native": "₩",
+    "id": "KP",
+    "country": "Korea North"
+  },
+  {
+    "alpha3": "LVA",
+    "symbol": "LVL",
+    "name": "Latvian lats",
+    "symbol_native": "Ls",
+    "id": "LV",
+    "country": "Latvia"
+  },
+  {
+    "alpha3": "LIE",
+    "symbol": "CHF",
+    "name": "Swiss Franc",
+    "symbol_native": "Fr.",
+    "id": "LI",
+    "country": "Liechtenstein"
+  },
+  {
+    "symbol": "MGA",
+    "name": "Malagasy ariary",
+    "country": "Madagascar",
+    "alpha3": "MDG",
+    "id": "MG"
+  },
+  {
+    "alpha3": "MLT",
+    "symbol": "EUR",
+    "name": "European Euro",
+    "symbol_native": "€",
+    "id": "MT",
+    "country": "Malta"
+  },
+  {
+    "symbol": "MDL",
+    "name": "Moldovan leu",
+    "country": "Moldova",
+    "alpha3": "MDA",
+    "id": "MD"
+  },
+  {
+    "symbol": "MAD",
+    "name": "Moroccan dirham",
+    "country": "Morocco",
+    "alpha3": "MAR",
+    "id": "MA"
+  },
+  {
+    "alpha3": "NPL",
+    "symbol": "NPR",
+    "name": "Nepalese rupee",
+    "symbol_native": "₨",
+    "id": "NP",
+    "country": "Nepal"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Niger",
+    "alpha3": "NER",
+    "id": "NE"
+  },
+  {
+    "alpha3": "PLW",
+    "symbol": "USD",
+    "name": "United States dollar",
+    "symbol_native": "$",
+    "id": "PW",
+    "country": "Palau"
+  },
+  {
+    "alpha3": "PHL",
+    "symbol": "PHP",
+    "name": "Philippine peso",
+    "symbol_native": "₱",
+    "id": "PH",
+    "country": "Philippines"
+  },
+  {
+    "alpha3": "ROU",
+    "symbol": "RON",
+    "name": "Romanian leu",
+    "symbol_native": "lei",
+    "id": "RO",
+    "country": "Romania"
+  },
+  {
+    "alpha3": "LCA",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "LC",
+    "country": "Saint Lucia"
+  },
+  {
+    "alpha3": "SAU",
+    "symbol": "SAR",
+    "name": "Saudi riyal",
+    "symbol_native": "﷼",
+    "id": "SA",
+    "country": "Saudi Arabia"
+  },
+  {
+    "alpha3": "SGP",
+    "symbol": "SGD",
+    "name": "Singapore dollar",
+    "symbol_native": "$",
+    "id": "SG",
+    "country": "Singapore"
+  },
+  {
+    "alpha3": "ZAF",
+    "symbol": "ZAR",
+    "name": "South African rand",
+    "symbol_native": "R",
+    "id": "ZA",
+    "country": "South Africa"
+  },
+  {
+    "alpha3": "SUR",
+    "symbol": "SRD",
+    "name": "Surinamese dollar",
+    "symbol_native": "$",
+    "id": "SR",
+    "country": "Suriname"
+  },
+  {
+    "alpha3": "TWN",
+    "symbol": "TWD",
+    "name": "New Taiwan dollar",
+    "symbol_native": "NT$",
+    "id": "TW",
+    "country": "Taiwan"
+  },
+  {
+    "symbol": "TOP",
+    "name": "Paanga",
+    "country": "Tonga",
+    "alpha3": "TON",
+    "id": "TO"
+  },
+  {
+    "alpha3": "TUV",
+    "symbol": "AUD",
+    "name": "Australian dollar",
+    "symbol_native": "$",
+    "id": "TV",
+    "country": "Tuvalu"
+  },
+  {
+    "alpha3": "USA",
+    "symbol": "USD",
+    "name": "United States dollar",
+    "symbol_native": "$",
+    "id": "US",
+    "country": "United States of America"
+  },
+  {
+    "alpha3": "VNM",
+    "symbol": "VND",
+    "name": "Vietnamese dong",
+    "symbol_native": "₫",
+    "id": "VN",
+    "country": "Vietnam"
+  },
+  {
+    "alpha3": "ALB",
+    "symbol": "ALL",
+    "name": "Albanian lek",
+    "symbol_native": "Lek",
+    "id": "AL",
+    "country": "Albania"
+  },
+  {
+    "alpha3": "ATG",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "AG",
+    "country": "Antigua and Barbuda"
+  },
+  {
+    "alpha3": "AUT",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "AT",
+    "country": "Austria"
+  },
+  {
+    "alpha3": "BRB",
+    "symbol": "BBD",
+    "name": "Barbadian dollar",
+    "symbol_native": "$",
+    "id": "BB",
+    "country": "Barbados"
+  },
+  {
+    "symbol": "BTN",
+    "name": "Bhutanese ngultrum",
+    "country": "Bhutan",
+    "alpha3": "BTN",
+    "id": "BT"
+  },
+  {
+    "alpha3": "BRN",
+    "symbol": "BND",
+    "name": "Brunei dollar",
+    "symbol_native": "$",
+    "id": "BN",
+    "country": "Brunei"
+  },
+  {
+    "symbol": "XAF",
+    "name": "Central African CFA franc",
+    "country": "Cameroon",
+    "alpha3": "CMR",
+    "id": "CM"
+  },
+  {
+    "alpha3": "CHL",
+    "symbol": "CLP",
+    "name": "Chilean peso",
+    "symbol_native": "$",
+    "id": "CL",
+    "country": "Chile"
+  },
+  {
+    "symbol": "CDF",
+    "name": "Congolese franc",
+    "country": "Congo, Democratic Republic",
+    "alpha3": "COD",
+    "id": "CD"
+  },
+  {
+    "alpha3": "CYP",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "CY",
+    "country": "Cyprus"
+  },
+  {
+    "alpha3": "DOM",
+    "symbol": "DOP",
+    "name": "Dominican peso",
+    "symbol_native": "RD$",
+    "id": "DO",
+    "country": "Dominican Republic"
+  },
+  {
+    "symbol": "ERN",
+    "name": "Eritrean nakfa",
+    "country": "Eritrea",
+    "alpha3": "ERI",
+    "id": "ER"
+  },
+  {
+    "alpha3": "FRA",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "FR",
+    "country": "France"
+  },
+  {
+    "alpha3": "DEU",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "DE",
+    "country": "Germany"
+  },
+  {
+    "alpha3": "GTM",
+    "symbol": "GTQ",
+    "name": "Guatemalan quetzal",
+    "symbol_native": "Q",
+    "id": "GT",
+    "country": "Guatemala"
+  },
+  {
+    "alpha3": "HND",
+    "symbol": "HNL",
+    "name": "Honduran lempira",
+    "symbol_native": "L",
+    "id": "HN",
+    "country": "Honduras"
+  },
+  {
+    "alpha3": "IDN",
+    "symbol": "IDR",
+    "name": "Indonesian rupiah",
+    "symbol_native": "Rp",
+    "id": "ID",
+    "country": "Indonesia"
+  },
+  {
+    "alpha3": "ITA",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "IT",
+    "country": "Italy"
+  },
+  {
+    "alpha3": "KEN",
+    "symbol": "KES",
+    "name": "Kenyan shilling",
+    "symbol_native": "KSh",
+    "id": "KE",
+    "country": "Kenya"
+  },
+  {
+    "alpha3": "KGZ",
+    "symbol": "KGS",
+    "name": "Kyrgyzstani som",
+    "symbol_native": "лв",
+    "id": "KG",
+    "country": "Kyrgyzstan"
+  },
+  {
+    "alpha3": "LBR",
+    "symbol": "LRD",
+    "name": "Liberian dollar",
+    "symbol_native": "$",
+    "id": "LR",
+    "country": "Liberia"
+  },
+  {
+    "symbol": "MOP",
+    "name": "Macanese pataca",
+    "country": "Macau",
+    "alpha3": "MAC",
+    "id": "MO"
+  },
+  {
+    "symbol": "MVR",
+    "name": "Maldivian rufiyaa",
+    "country": "Maldives",
+    "alpha3": "MDV",
+    "id": "MV"
+  },
+  {
+    "alpha3": "MEX",
+    "symbol": "MXN",
+    "name": "Mexican peso",
+    "symbol_native": "$",
+    "id": "MX",
+    "country": "Mexico"
+  },
+  {
+    "alpha3": "MNE",
+    "symbol": "EUR",
+    "name": "European Euro",
+    "symbol_native": "€",
+    "id": "ME",
+    "country": "Montenegro"
+  },
+  {
+    "alpha3": "NAM",
+    "symbol": "NAD",
+    "name": "Namibian dollar",
+    "symbol_native": "$",
+    "id": "NA",
+    "country": "Namibia"
+  },
+  {
+    "alpha3": "NZL",
+    "symbol": "NZD",
+    "name": "New Zealand dollar",
+    "symbol_native": "$",
+    "id": "NZ",
+    "country": "New Zealand"
+  },
+  {
+    "alpha3": "OMN",
+    "symbol": "OMR",
+    "name": "Omani rial",
+    "symbol_native": "﷼",
+    "id": "OM",
+    "country": "Oman"
+  },
+  {
+    "alpha3": "PRY",
+    "symbol": "PYG",
+    "name": "Paraguayan guarani",
+    "symbol_native": "Gs",
+    "id": "PY",
+    "country": "Paraguay"
+  },
+  {
+    "alpha3": "PRI",
+    "symbol": "USD",
+    "name": "United States dollar",
+    "symbol_native": "$",
+    "id": "PR",
+    "country": "Puerto Rico"
+  },
+  {
+    "alpha3": "SHN",
+    "symbol": "SHP",
+    "name": "Saint Helena pound",
+    "symbol_native": "£",
+    "id": "SH",
+    "country": "Saint Helena"
+  },
+  {
+    "alpha3": "SMR",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "SM",
+    "country": "San Marino"
+  },
+  {
+    "alpha3": "SYC",
+    "symbol": "SCR",
+    "name": "Seychellois rupee",
+    "symbol_native": "₨",
+    "id": "SC",
+    "country": "Seychelles"
+  },
+  {
+    "alpha3": "SLB",
+    "symbol": "SBD",
+    "name": "Solomon Islands dollar",
+    "symbol_native": "$",
+    "id": "SB",
+    "country": "Solomon Islands"
+  },
+  {
+    "alpha3": "LKA",
+    "symbol": "LKR",
+    "name": "Sri Lankan rupee",
+    "symbol_native": "₨",
+    "id": "LK",
+    "country": "Sri Lanka"
+  },
+  {
+    "alpha3": "CHE",
+    "symbol": "CHF",
+    "name": "Swiss franc",
+    "symbol_native": "Fr.",
+    "id": "CH",
+    "country": "Switzerland"
+  },
+  {
+    "alpha3": "THA",
+    "symbol": "THB",
+    "name": "Thai baht",
+    "symbol_native": "฿",
+    "id": "TH",
+    "country": "Thailand"
+  },
+  {
+    "symbol": "TRY",
+    "name": "Turkish new lira",
+    "country": "Turkey",
+    "alpha3": "TUR",
+    "id": "TR"
+  },
+  {
+    "symbol": "AED",
+    "name": "UAE dirham",
+    "country": "United Arab Emirates",
+    "alpha3": "ARE",
+    "id": "AE"
+  },
+  {
+    "symbol": "VUV",
+    "name": "Vanuatu vatu",
+    "country": "Vanuatu",
+    "alpha3": "VUT",
+    "id": "VU"
+  },
+  {
+    "symbol": "ZMW",
+    "name": "Zambian kwacha",
+    "country": "Zambia",
+    "alpha3": "ZMB",
+    "id": "ZM"
+  },
+  {
+    "symbol": "AOA",
+    "name": "Angolan kwanza",
+    "country": "Angola",
+    "alpha3": "AGO",
+    "id": "AO"
+  },
+  {
+    "alpha3": "ABW",
+    "symbol": "AWG",
+    "name": "Aruban florin",
+    "symbol_native": "ƒ",
+    "id": "AW",
+    "country": "Aruba"
+  },
+  {
+    "symbol": "BHD",
+    "name": "Bahraini dinar",
+    "country": "Bahrain",
+    "alpha3": "BHR",
+    "id": "BH"
+  },
+  {
+    "alpha3": "BLZ",
+    "symbol": "BZD",
+    "name": "Belize dollar",
+    "symbol_native": "BZ$",
+    "id": "BZ",
+    "country": "Belize"
+  },
+  {
+    "alpha3": "BWA",
+    "symbol": "BWP",
+    "name": "Botswana pula",
+    "symbol_native": "P",
+    "id": "BW",
+    "country": "Botswana"
+  },
+  {
+    "symbol": "BIF",
+    "name": "Burundi franc",
+    "country": "Burundi",
+    "alpha3": "BDI",
+    "id": "BI"
+  },
+  {
+    "symbol": "XAF",
+    "name": "Central African CFA franc",
+    "country": "Central African Republic",
+    "alpha3": "CAF",
+    "id": "CF"
+  },
+  {
+    "symbol": "KMF",
+    "name": "Comorian franc",
+    "country": "Comoros",
+    "alpha3": "COM",
+    "id": "KM"
+  },
+  {
+    "alpha3": "HRV",
+    "symbol": "HRK",
+    "name": "Croatian kuna",
+    "symbol_native": "kn",
+    "id": "HR",
+    "country": "Croatia"
+  },
+  {
+    "symbol": "DJF",
+    "name": "Djiboutian franc",
+    "country": "Djibouti",
+    "alpha3": "DJI",
+    "id": "DJ"
+  },
+  {
+    "alpha3": "SLV",
+    "symbol": "USD",
+    "name": "United States dollar",
+    "symbol_native": "$",
+    "id": "SV",
+    "country": "El Salvador"
+  },
+  {
+    "alpha3": "FJI",
+    "symbol": "FJD",
+    "name": "Fijian dollar",
+    "symbol_native": "$",
+    "id": "FJ",
+    "country": "Fiji"
+  },
+  {
+    "symbol": "GMD",
+    "name": "Gambian dalasi",
+    "country": "Gambia",
+    "alpha3": "GMB",
+    "id": "GM"
+  },
+  {
+    "alpha3": "GRC",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "GR",
+    "country": "Greece"
+  },
+  {
+    "alpha3": "GUY",
+    "symbol": "GYD",
+    "name": "Guyanese dollar",
+    "symbol_native": "$",
+    "id": "GY",
+    "country": "Guyana"
+  },
+  {
+    "alpha3": "ISL",
+    "symbol": "ISK",
+    "name": "Icelandic króna",
+    "symbol_native": "kr",
+    "id": "IS",
+    "country": "Iceland"
+  },
+  {
+    "alpha3": "IRL",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "IE",
+    "country": "Ireland"
+  },
+  {
+    "symbol": "JOD",
+    "name": "Jordanian dinar",
+    "country": "Jordan",
+    "alpha3": "JOR",
+    "id": "JO"
+  },
+  {
+    "alpha3": "KOR",
+    "symbol": "KRW",
+    "name": "South Korean won",
+    "symbol_native": "₩",
+    "id": "KR",
+    "country": "Korea South"
+  },
+  {
+    "alpha3": "LBN",
+    "symbol": "LBP",
+    "name": "Lebanese lira",
+    "symbol_native": "£",
+    "id": "LB",
+    "country": "Lebanon"
+  },
+  {
+    "symbol": "MWK",
+    "name": "Malawian kwacha",
+    "country": "Malawi",
+    "alpha3": "MWI",
+    "id": "MW"
+  },
+  {
+    "symbol": "MRO",
+    "name": "Mauritanian ouguiya",
+    "country": "Mauritania",
+    "alpha3": "MRT",
+    "id": "MR"
+  },
+  {
+    "alpha3": "MCO",
+    "symbol": "EUR",
+    "name": "European Euro",
+    "symbol_native": "€",
+    "id": "MC",
+    "country": "Monaco"
+  },
+  {
+    "symbol": "MZN",
+    "name": "Mozambican metical",
+    "country": "Mozambique",
+    "alpha3": "MOZ",
+    "id": "MZ"
+  },
+  {
+    "alpha3": "NLD",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "NL",
+    "country": "Netherlands"
+  },
+  {
+    "alpha3": "NGA",
+    "symbol": "NGN",
+    "name": "Nigerian naira",
+    "symbol_native": "₦",
+    "id": "NG",
+    "country": "Nigeria"
+  },
+  {
+    "alpha3": "PAN",
+    "symbol": "PAB",
+    "name": "Panamanian balboa",
+    "symbol_native": "B/.",
+    "id": "PA",
+    "country": "Panama"
+  },
+  {
+    "alpha3": "POL",
+    "symbol": "PLN",
+    "name": "Polish zloty",
+    "symbol_native": "zł",
+    "id": "PL",
+    "country": "Poland"
+  },
+  {
+    "alpha3": "RUS",
+    "symbol": "RUB",
+    "name": "Russian ruble",
+    "symbol_native": "руб",
+    "id": "RU",
+    "country": "Russia"
+  },
+  {
+    "alpha3": "VCT",
+    "symbol": "XCD",
+    "name": "East Caribbean dollar",
+    "symbol_native": "$",
+    "id": "VC",
+    "country": "Saint Vincent and the Grenadines"
+  },
+  {
+    "symbol": "XOF",
+    "name": "West African CFA franc",
+    "country": "Senegal",
+    "alpha3": "SEN",
+    "id": "SN"
+  },
+  {
+    "alpha3": "SVK",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "SK",
+    "country": "Slovakia"
+  },
+  {
+    "symbol": "SDG",
+    "name": "Sudanese pound",
+    "country": "South Sudan",
+    "alpha3": "SSD",
+    "id": "SS"
+  },
+  {
+    "symbol": "SZL",
+    "name": "Swazi lilangeni",
+    "country": "Swaziland",
+    "alpha3": "SWZ",
+    "id": "SZ"
+  },
+  {
+    "symbol": "TJS",
+    "name": "Tajikistani somoni",
+    "country": "Tajikistan",
+    "alpha3": "TJK",
+    "id": "TJ"
+  },
+  {
+    "alpha3": "TTO",
+    "symbol": "TTD",
+    "name": "Trinidad and Tobago dollar",
+    "symbol_native": "TT$",
+    "id": "TT",
+    "country": "Trinidad and Tobago"
+  },
+  {
+    "alpha3": "UGA",
+    "symbol": "UGX",
+    "name": "Ugandan shilling",
+    "symbol_native": "USh",
+    "id": "UG",
+    "country": "Uganda"
+  },
+  {
+    "alpha3": "URY",
+    "symbol": "UYU",
+    "name": "Uruguayan peso",
+    "symbol_native": "$U",
+    "id": "UY",
+    "country": "Uruguay"
+  },
+  {
+    "symbol": "XPF",
+    "name": "CFP franc",
+    "country": "Wallis and Futuna Islands",
+    "alpha3": "WLF",
+    "id": "WF"
+  },
+  {
+    "alpha3": "LTU",
+    "symbol": "EUR",
+    "name": "European euro",
+    "symbol_native": "€",
+    "id": "LT",
+    "country": "Lithuania"
+  }
+]

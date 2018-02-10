@@ -40,6 +40,7 @@ public class DetailCurrencyFragmentPresenter implements DetailCurrencyFragmentCo
 
     @Override
     public void saveDataCurrencyToDataBase(
+            String id,
             String symbol,
             String name,
             String countryName,
@@ -47,6 +48,7 @@ public class DetailCurrencyFragmentPresenter implements DetailCurrencyFragmentCo
             String imageCountry,
             String imagePathCurrency
     ) {
+        currencyModel.setId(id);
         currencyModel.setSymbol(symbol);
         currencyModel.setName(name);
         currencyModel.setCountry(countryName);

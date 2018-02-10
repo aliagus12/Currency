@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp">
+        android:layout_height="130dp">
 
         <LinearLayout
             android:id="@+id/linear_country"
@@ -18,10 +18,10 @@
             <ImageView
                 android:id="@+id/countryImage"
                 android:layout_width="80dp"
-                android:layout_height="75dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:background="@drawable/background_edit_text_rounded"
-                android:padding="3dp"
+                android:background="@drawable/background_image_view"
+                android:padding="1dp"
                 android:layout_margin="3dp"
                 android:src="@drawable/ic_broken_image_grey_24dp" />
 
@@ -45,11 +45,11 @@
             <ImageView
                 android:id="@+id/imageCurrency"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="90dp"
                 android:gravity="center"
-                android:padding="3dp"
+                android:padding="1dp"
                 android:layout_margin="3dp"
-                android:background="@drawable/background_edit_text_rounded"
+                android:background="@drawable/background_image_view"
                 android:src="@drawable/ic_broken_image_grey_24dp" />
 
             <TextView

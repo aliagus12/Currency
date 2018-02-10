@@ -1,7 +1,7 @@
 package com.aliagushutapea.convertion.main_content;
 
-import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
+import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.utils.SourceString;
 
 import javax.inject.Inject;
@@ -12,10 +12,10 @@ import javax.inject.Inject;
 
 public class MainContentActivityPresenter implements MainContentActivityContract.Presenter {
 
+    private static final String TAG = MainContentActivityPresenter.class.getSimpleName();
     MainContentActivityContract.View viewContent;
     private CurrencyModel currencyModel;
     private DatabaseManagerHelper databaseManagerHelper;
-    public static final String TABLE_CONFIGURATION = "configuration";
 
     @Inject
     public MainContentActivityPresenter(
@@ -39,10 +39,6 @@ public class MainContentActivityPresenter implements MainContentActivityContract
         viewContent = null;
     }
 
-    public void addCurrency() {
-        //viewContent.attachFragmentAddCurrency();
-    }
-
     public void inspectDatabase(){
         viewContent.inspecDatabase();
     }
@@ -54,6 +50,17 @@ public class MainContentActivityPresenter implements MainContentActivityContract
         databaseManagerHelper.saveConfiguration(
                 SourceString.CONFIGURATION_COLOMN,
                 currencyModel
+        );
+    }
+
+    @Override
+    public void loadContentToHeader() {
+        currencyModel = databaseManagerHelper.getCurrencyModelWithoutKey(SourceString.TARGET_CURRENCY_COLOMN);
+        viewContent.attachContentToHeader(
+                currencyModel.getName(),
+                currencyModel.getSymbol(),
+                currencyModel.getImageCurrency(),
+                currencyModel.getImageCountry()
         );
     }
 }

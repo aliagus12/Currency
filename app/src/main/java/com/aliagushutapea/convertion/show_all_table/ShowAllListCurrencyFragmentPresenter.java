@@ -2,6 +2,7 @@ package com.aliagushutapea.convertion.show_all_table;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.CurrencyUtils;
 import com.aliagushutapea.convertion.utils.SourceString;
 
 import java.util.ArrayList;
@@ -18,14 +19,17 @@ public class ShowAllListCurrencyFragmentPresenter implements ShowAllListCurrency
     private static final String TAG = ShowAllListCurrencyFragment.class.getSimpleName();
     ShowAllListCurrencyFragmentContract.View view;
     private DatabaseManagerHelper databaseManagerHelper;
+    private CurrencyUtils currencyUtils;
 
     @Inject
     public ShowAllListCurrencyFragmentPresenter(
             ShowAllListCurrencyFragmentContract.View view,
-            DatabaseManagerHelper databaseManagerHelper
+            DatabaseManagerHelper databaseManagerHelper,
+            CurrencyUtils currencyUtils
     ) {
         this.view = view;
         this.databaseManagerHelper = databaseManagerHelper;
+        this.currencyUtils = currencyUtils;
     }
 
     @Override
@@ -67,4 +71,15 @@ public class ShowAllListCurrencyFragmentPresenter implements ShowAllListCurrency
         }
     }
 
+    @Override
+    public void querySearch(String newText) {
+        List<CurrencyModel> currencyModelLists = databaseManagerHelper.getAllCurrencyFromDatabase(SourceString.ALL_CURRENCY_COLOMN);
+        //CurrencyUtils currencyUtils = new CurrencyUtils();
+        List<CurrencyModel> listCurrencyModelFiltered = currencyUtils.filter(currencyModelLists, newText);
+        List<Integer> listType = new ArrayList<>();
+        for (int a = 0; a < listCurrencyModelFiltered.size(); a++) {
+            listType.add(1);
+        }
+        view.refreshAdapter(listCurrencyModelFiltered, listType);
+    }
 }

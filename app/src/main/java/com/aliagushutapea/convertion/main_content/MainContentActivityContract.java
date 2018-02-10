@@ -18,9 +18,18 @@ public interface MainContentActivityContract {
 
         void detailCurrency(CurrencyModel currencyId);
 
+        void attachContentToHeader(
+                String name,
+                String symbol,
+                String imageCurrency,
+                String imageCountry
+        );
     }
 
     interface Presenter extends BasePresenter {
+
         void saveConfiguration();
+
+        void loadContentToHeader();
     }
 }

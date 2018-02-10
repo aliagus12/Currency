@@ -1,10 +1,13 @@
 package com.aliagushutapea.convertion;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,26 +18,31 @@ import com.aliagushutapea.convertion.main_content.MainContentActivity;
 
 import javax.inject.Inject;
 
+import dmax.dialog.SpotsDialog;
+
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 
     private static final int PERMISSION_REQUEST_CODE = 200;
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     @Inject
     MainActivityPresenter mainActivityPresenter;
-
     View mContentView;
-    private static final String TAG = MainActivity.class.getSimpleName();
+    AlertDialog mProgressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initProgressDialog();
         new MainActivityPresenterModule(this);
         DaggerMainActivityComponent
                 .builder()
                 .mainActivityPresenterModule(new MainActivityPresenterModule(this))
                 .applicationComponentMVP(
-                        ((MainApplication)getApplication())
-                        .getApplicationComponentMVP()
+                        ((MainApplication) getApplication())
+                                .getApplicationComponentMVP()
                 )
                 .build()
                 .inject(this);
@@ -50,28 +58,56 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         checkPermission();
     }
 
+    private void initProgressDialog() {
+        mProgressDialog = new SpotsDialog(MainActivity.this, R.style.ProgressDialogStyle);
+        mProgressDialog.setCancelable(false);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void checkPermission() {
-        boolean isPermissionStorageGranted = ActivityCompat.checkSelfPermission(MainActivity.this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        boolean isPermissionStorageGranted = ActivityCompat
+                .checkSelfPermission(
+                        MainActivity.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED;
         String[] listPermission = new String[]{
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE
         };
         if (!isPermissionStorageGranted) {
-            ActivityCompat.requestPermissions(
-                    MainActivity.this,
+            requestPermissions(
                     listPermission,
                     PERMISSION_REQUEST_CODE
             );
             return;
+        } else {
+            mProgressDialog.show();
+            mainActivityPresenter.insertDataToDatabase();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            boolean isPermitted = true;
+            for (int granted : grantResults) {
+                if (granted == PackageManager.PERMISSION_DENIED) {
+                    isPermitted = false;
+                }
+            }
+            if (isPermitted) {
+                mProgressDialog.show();
+                mainActivityPresenter.insertDataToDatabase();
+            } else {
+                moveTaskToBack(true);
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        toMainContent();
         hideNavigationBar();
-        mainActivityPresenter.insertDataToDatabase();
     }
 
     private void hideNavigationBar() {
@@ -102,4 +138,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     }
 
+    @Override
+    public void toMainContentAndDissmisProgressDialog() {
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+        toMainContent();
+    }
 }

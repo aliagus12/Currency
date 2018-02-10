@@ -1,0 +1,467 @@
+{
+   "AFN": {
+      "name": "Afghanistan"
+   },
+   "AUD":
+      {
+         "name": "Australia"
+      },
+     
+   "BDT": {
+      "name": "Bangladesh"
+   },
+   "XOF":
+      {
+         "name": "Togo"
+      },
+     
+   "BRL": {
+      "name": "Brazil"
+   },
+   "KHR": {
+      "name": "Cambodia"
+   },
+   "XAF":
+      {
+         "name": "Gabon"
+      },
+      
+   "CUP": {
+      "name": "Cuba"
+   },
+   "EUR": 
+      {
+         "name": "Portugal"
+      },
+   "GEL": {
+      "name": "Georgia"
+   },
+   "HTG": {
+      "name": "Haiti"
+   },
+   "INR": {
+      "name": "India"
+   },
+   "ILS": {
+      "name": "Israel"
+   },
+   "KZT": {
+      "name": "Kazakhstan"
+   },
+   "KWD": {
+      "name": "Kuwait"
+   },
+   "LSL": {
+      "name": "Lesotho"
+   },
+   "MYR": {
+      "name": "Malaysia"
+   },
+   "MUR": {
+      "name": "Mauritius"
+   },
+   "MNT": {
+      "name": "Mongolia"
+   },
+   "MMK": {
+      "name": "Myanmar"
+   },
+   
+   "NOK": {
+      "name": "Norway"
+   },
+   "PGK": {
+      "name": "Papua New Guinea"
+   },
+   "RWF": {
+      "name": "Rwanda"
+   },
+   "WST": {
+      "name": "Samoa (Western)"
+   },
+   "RSD": {
+      "name": "Serbia"
+   },
+   "SEK": {
+      "name": "Sweden"
+   },
+   "TZS": {
+      "name": "Tanzania"
+   },
+   "TND": {
+      "name": "Tunisia"
+   },
+   "UAH": {
+      "name": "Ukraine"
+   },
+   "UZS": {
+      "name": "Uzbekistan"
+   },
+   "YER": {
+      "name": "Yemen"
+   },
+   "DZD": {
+      "name": "Algeria"
+   },
+   "ARS": {
+      "name": "Argentina"
+   },
+   "AZN": {
+      "name": "Azerbaijan"
+   },
+   "BYR": {
+      "name": "Belarus"
+   },
+   "BOB": {
+      "name": "Bolivia"
+   },
+   "BGN": {
+      "name": "Bulgaria"
+   },
+   "CAD": {
+      "name": "Canada"
+   },
+   "CNY": {
+      "name": "China"
+   },
+   "CRC": {
+      "name": "Costa Rica"
+   },
+   "CZK": {
+      "name": "Czech Republic"
+   },
+   "USD": 
+      {
+         "name": "United States of America"
+      },
+     
+   "GHS": {
+      "name": "Ghana"
+   },
+   "GNF": {
+      "name": "Guinea"
+   },
+   "HKD": {
+      "name": "Hong Kong"
+   },
+   "IRR": {
+      "name": "Iran, Islamic Republic of"
+   },
+   "JMD": {
+      "name": "Jamaica"
+   },
+   "LAK": {
+      "name": "Laos"
+   },
+   "LYD": {
+      "name": "Libya"
+   },
+   "MKD": {
+      "name": "Macedonia (Former Yug. Rep.)"
+   },
+   "NIO": {
+      "name": "Nicaragua"
+   },
+   "PKR": {
+      "name": "Pakistan"
+   },
+   "PEN": {
+      "name": "Peru"
+   },
+   "QAR": {
+      "name": "Qatar"
+   },
+   "STD": {
+      "name": "Sao Tome and Principe"
+   },
+   "SLL": {
+      "name": "Sierra Leone"
+   },
+   "SOS": {
+      "name": "Somalia"
+   },
+   "SDG":
+      {
+         "name": "Sudan"
+      },
+   "SYP": {
+      "name": "Syria"
+   },
+   "TMT": {
+      "name": "Turkmenistan"
+   },
+   "GBP": {
+      "name": "United Kingdom"
+   },
+   "VEF": {
+      "name": "Venezuela"
+   },
+   "AMD": {
+      "name": "Armenia"
+   },
+   "BSD": {
+      "name": "Bahamas"
+   },
+   "BAM": {
+      "name": "Bosnia-Herzegovina"
+   },
+   "KYD": {
+      "name": "Cayman Islands"
+   },
+   "COP": {
+      "name": "Colombia"
+   },
+   "DKK": {
+      "name": "Denmark"
+   },
+   "EGP": {
+      "name": "Egypt"
+   },
+   "ETB": {
+      "name": "Ethiopia"
+   },
+   "GIP": {
+      "name": "Gibraltar"
+   },
+   "HUF": {
+      "name": "Hungary"
+   },
+   "IQD": {
+      "name": "Iraq"
+   },
+   "JPY": {
+      "name": "Japan"
+   },
+   "KPW": {
+      "name": "Korea North"
+   },
+   "LVL": {
+      "name": "Latvia"
+   },
+   "CHF":
+      {
+         "name": "Switzerland"
+      },
+   "MGA": {
+      "name": "Madagascar"
+   },
+   "MDL": {
+      "name": "Moldova"
+   },
+   "MAD": {
+      "name": "Morocco"
+   },
+   "NPR": {
+      "name": "Nepal"
+   },
+   "PHP": {
+      "name": "Philippines"
+   },
+   "RON": {
+      "name": "Romania"
+   },
+   "SAR": {
+      "name": "Saudi Arabia"
+   },
+   "SGD": {
+      "name": "Singapore"
+   },
+   "ZAR": {
+      "name": "South Africa"
+   },
+   "SRD": {
+      "name": "Suriname"
+   },
+   "TWD": {
+      "name": "Taiwan"
+   },
+   "TOP": {
+      "name": "Tonga"
+   },
+   "VND": {
+      "name": "Vietnam"
+   },
+   "ALL": {
+      "name": "Albania"
+   },
+   "BBD": {
+      "name": "Barbados"
+   },
+   "BTN": {
+      "name": "Bhutan"
+   },
+   "BND": {
+      "name": "Brunei"
+   },
+   "CLP": {
+      "name": "Chile"
+   },
+   "CDF": {
+      "name": "Congo, Democratic Republic"
+   },
+   "DOP": {
+      "name": "Dominican Republic"
+   },
+   "ERN": {
+      "name": "Eritrea"
+   },
+   "GTQ": {
+      "name": "Guatemala"
+   },
+   "HNL": {
+      "name": "Honduras"
+   },
+   "IDR": {
+      "name": "Indonesia"
+   },
+   "KES": {
+      "name": "Kenya"
+   },
+   "KGS": {
+      "name": "Kyrgyzstan"
+   },
+   "LRD": {
+      "name": "Liberia"
+   },
+   "MOP": {
+      "name": "Macau"
+   },
+   "MVR": {
+      "name": "Maldives"
+   },
+   "MXN": {
+      "name": "Mexico"
+   },
+   "NAD": {
+      "name": "Namibia"
+   },
+   "NZD": {
+      "name": "New Zealand"
+   },
+   "OMR": {
+      "name": "Oman"
+   },
+   "PYG": {
+      "name": "Paraguay"
+   },
+   "SHP": {
+      "name": "Saint Helena"
+   },
+   "SCR": {
+      "name": "Seychelles"
+   },
+   "SBD": {
+      "name": "Solomon Islands"
+   },
+   "LKR": {
+      "name": "Sri Lanka"
+   },
+   "THB": {
+      "name": "Thailand"
+   },
+   "TRY": {
+      "name": "Turkey"
+   },
+   "AED": {
+      "name": "United Arab Emirates"
+   },
+   "VUV": {
+      "name": "Vanuatu"
+   },
+   "ZMK": {
+      "name": "Zambia"
+   },
+   "AOA": {
+      "name": "Angola"
+   },
+   "AWG": {
+      "name": "Aruba"
+   },
+   "BHD": {
+      "name": "Bahrain"
+   },
+   "BLZ": {
+      "name": "Belize"
+   },
+   "BWP": {
+      "name": "Botswana"
+   },
+   "BIF": {
+      "name": "Burundi"
+   },
+   "KMF": {
+      "name": "Comoros"
+   },
+   "HRK": {
+      "name": "Croatia"
+   },
+   "DJF": {
+      "name": "Djibouti"
+   },
+   "FJD": {
+      "name": "Fiji"
+   },
+   "GMD": {
+      "name": "Gambia"
+   },
+   "GYD": {
+      "name": "Guyana"
+   },
+   "ISK": {
+      "name": "Iceland"
+   },
+   "JOD": {
+      "name": "Jordan"
+   },
+   "KRW": {
+      "name": "Korea South"
+   },
+   "LBP": {
+      "name": "Lebanon"
+   },
+   "MWK": {
+      "name": "Malawi"
+   },
+   "MRO": {
+      "name": "Mauritania"
+   },
+   "MZN": {
+      "name": "Mozambique"
+   },
+   "NGN": {
+      "name": "Nigeria"
+   },
+   "PAB": {
+      "name": "Panama"
+   },
+   "PLN": {
+      "name": "Poland"
+   },
+   "RUB": {
+      "name": "Russia"
+   },
+   "SZL": {
+      "name": "Swaziland"
+   },
+   "TJS": {
+      "name": "Tajikistan"
+   },
+   "TTD": {
+      "name": "Trinidad and Tobago"
+   },
+   "UGX": {
+      "name": "Uganda"
+   },
+   "UYU": {
+      "name": "Uruguay"
+   },
+    "LTL": {
+         "name": "Lithuania"
+   },
+    "EEK": {
+         "name": "Estonia"
+   },
+   "BZD": {
+         "name": "Belize"
+      }
+}

@@ -15,10 +15,14 @@ public interface CurrencyExchangeFragmentContract {
         void showAllCurrency(android.view.View view);
 
         void loadDataToView(CurrencyModel target, CurrencyModel result);
+
+        void setTextViewResult(String finalResult);
     }
 
     interface Presenter extends BasePresenter {
 
         void loadData();
+
+        void onNumberChanges(String number);
     }
 }

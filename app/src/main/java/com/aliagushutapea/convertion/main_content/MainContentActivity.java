@@ -16,21 +16,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aliagushutapea.convertion.MainApplication;
 import com.aliagushutapea.convertion.R;
-import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragment;
 import com.aliagushutapea.convertion.add_table_currency.AddTableCurrencyFragment;
+import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragment;
 import com.aliagushutapea.convertion.database_helper.InspectionDatabase;
 import com.aliagushutapea.convertion.databinding.ActivityMainContentBinding;
 import com.aliagushutapea.convertion.dependencyinjection.component_mpv.DaggerMainContentActivityComponent;
 import com.aliagushutapea.convertion.dependencyinjection.module_mpv.MainContentActivityPresenterModule;
+import com.aliagushutapea.convertion.detail_currency.DetailCurrencyFragment;
 import com.aliagushutapea.convertion.model.CurrencyModel;
-import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragment;
 import com.aliagushutapea.convertion.show_all_table.ShowAllListCurrencyFragment;
 import com.aliagushutapea.convertion.temperature_exchange.TemperatureExchange;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -40,15 +42,18 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
         NavigationView.OnNavigationItemSelectedListener,
         BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = MainContentActivity.class.getSimpleName();
     @Inject
     MainContentActivityPresenter presenter;
+    ImageView imageViewCurrency;
+    TextView nameCurrencyHeader;
+    TextView symbolCurrencyHeader;
     private Toolbar toolbarAppbar;
     private ActivityMainContentBinding dataBinding;
     private Menu menuNav;
     private Menu menuNavBottom;
     private MenuItem mChanger;
     private BottomNavigationView bottomNavigationView;
-    private static final String TAG = MainContentActivity.class.getSimpleName();
     private Toast toast;
     private DetailCurrencyFragment detailCurrencyFragment;
     private AddTableCurrencyFragment addTableCurrencyFragment;
@@ -76,7 +81,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
     private void setUpDrawer() {
         toolbarAppbar = dataBinding.includeAppBar.includeToolbar.defaultToolbar;
         setSupportActionBar(toolbarAppbar);
-        toolbarAppbar.setTitle(R.string.money_changer);
+        toolbarAppbar.setTitle(R.string.currency);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 dataBinding.drawerLayoutMain,
@@ -87,6 +92,15 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
         dataBinding.drawerLayoutMain.addDrawerListener(toggle);
         toggle.syncState();
         dataBinding.navigationDrawer.setNavigationItemSelectedListener(this);
+        imageViewCurrency = (ImageView)dataBinding.navigationDrawer
+                .getHeaderView(0)
+                .findViewById(R.id.circular_network_image_view_user_nav_header);
+        nameCurrencyHeader = (TextView) dataBinding.navigationDrawer
+                .getHeaderView(0)
+                .findViewById(R.id.text_view_name_currency_nav_header);
+        symbolCurrencyHeader = (TextView) dataBinding.navigationDrawer
+                .getHeaderView(0)
+                .findViewById(R.id.text_view_symbol_nav_header);
         menuNav = dataBinding.navigationDrawer.getMenu();
     }
 
@@ -99,6 +113,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
         mChanger = menuNavBottom.findItem(R.id.botton_navigation_money_exchange);
         bottomNavigationViowGetTreeObserver(menuNavBottom);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        presenter.loadContentToHeader();
     }
 
     private void bottomNavigationViowGetTreeObserver(final Menu menuNavBottom) {
@@ -170,7 +185,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         //for navigation drawer
         switch (item.getItemId()) {
-            case R.id.menu_navigation_drawer_money:
+            /*case R.id.menu_navigation_drawer_money:
                 toolbarAppbar.setTitle(R.string.money_exchange);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_layout_content_activity_drawer, new CurrencyExchangeFragment())
@@ -189,8 +204,8 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
                         getSupportFragmentManager(),
                         addTableCurrencyFragment.getTag()
                 );
-                break;
-            case R.id.menu_navigation_drawer_show_all_table:
+                break;*/
+            case R.id.menu_navigation_drawer_show_all_currency:
                 presenter.saveConfiguration();
                 showAllListCurrencyFragment = new ShowAllListCurrencyFragment();
                 showAllListCurrencyFragment.setContext(getApplicationContext());
@@ -205,7 +220,7 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
         //for button navigation
         switch (item.getItemId()){
             case R.id.botton_navigation_money_exchange:
-                toolbarAppbar.setTitle(R.string.money_exchange);
+                toolbarAppbar.setTitle(R.string.currency);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_layout_content_activity_drawer, new CurrencyExchangeFragment())
                         .commitAllowingStateLoss();
@@ -247,11 +262,28 @@ public class MainContentActivity extends AppCompatActivity implements MainConten
         );
     }
 
+    @Override
+    public void attachContentToHeader(
+            String name,
+            String symbol,
+            String imageCurrency,
+            String imageCountry) {
+        imageViewCurrency.setScaleType(ImageView.ScaleType.FIT_XY);
+        if (imageCountry != null && imageCurrency.equals("") && imageCurrency.equals("-")){
+            imageCurrency = imageCountry;
+        }
+        Glide.with(getApplicationContext())
+                .load(imageCurrency)
+                .into(imageViewCurrency);
+        nameCurrencyHeader.setText(name);
+        symbolCurrencyHeader.setText(symbol);
+    }
+
     public void refresh() {
         onResume();
+        presenter.loadContentToHeader();
     }
 
     public void showDialog(){
-
     }
 }

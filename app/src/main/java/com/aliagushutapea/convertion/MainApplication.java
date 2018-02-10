@@ -1,7 +1,10 @@
 package com.aliagushutapea.convertion;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 
 import com.aliagushutapea.convertion.dependencyinjection.component_database.ApplicationComponentDatabase;
 import com.aliagushutapea.convertion.dependencyinjection.component_database.DaggerApplicationComponentDatabase;
@@ -16,7 +19,7 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class MainApplication extends Application {
-
+    private static final int PERMISSION_REQUEST_CODE = 200;
     ApplicationComponentMVP componentMVP;
     ApplicationComponentDatabase componentDatabase;
 
@@ -30,7 +33,7 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        initializeLeakCanary();
+        checkPermission();
         componentMVP = DaggerApplicationComponentMVP
                 .builder()
                 .applicationModuleMVP(new ApplicationModuleMVP(this))
@@ -40,6 +43,18 @@ public class MainApplication extends Application {
                 .builder()
                 .applicationModuleDatabase(new ApplicationModuleDatabase(this))
                 .build();
+    }
+
+    private void checkPermission() {
+        boolean isPermissionStorageGranted = ActivityCompat
+                .checkSelfPermission(
+                        MainApplication.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED;
+        if (isPermissionStorageGranted) {
+            initializeLeakCanary();
+            return;
+        }
     }
 
     private void initializeLeakCanary() {

@@ -12,13 +12,10 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,8 +38,10 @@ import butterknife.OnClick;
  * Created by ali on 25/01/18.
  */
 
-public class DetailCurrencyFragment extends BottomSheetDialogFragment implements DetailCurrencyFragmentContract.View {
+public class DetailCurrencyFragment extends BottomSheetDialogFragment implements DetailCurrencyFragmentContract.View,
+        View.OnClickListener, MenuItem.OnMenuItemClickListener {
 
+    private static final String TAG = DetailCurrencyFragment.class.getSimpleName();
     private Context context;
     private View view;
     @BindView(R.id.mainContainerAddCurrency)
@@ -53,16 +52,14 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     TextView mTextViewNameCurrency;
     @BindView(R.id.symbol_native)
     TextView mTextViewSymbolNative;
+    @BindView(R.id.code)
+    TextView mCode;
     @BindView(R.id.name_country)
-    AppCompatEditText mEditTextNameCountry;
+    TextView mEditTextNameCountry;
     @BindView(R.id.imageAddCurrency)
     AppCompatImageView mImageViewCurrency;
     @BindView(R.id.imageCountry)
     AppCompatImageView mImageViewCountry;
-    @BindView(R.id.btnOkAddCurrency)
-    Button btnOkAddCurrency;
-    @BindView(R.id.btnCancelAddCurrency)
-    Button btnCancelAddCurrency;
     @BindView(R.id.default_toolbar)
     Toolbar toolbarAddCurrency;
     CurrencyModel mCurrencyModel;
@@ -71,10 +68,7 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     @Inject
     DetailCurrencyFragmentPresenter mPresenter;
     private static final int RESULT_LOAD_IMAGE_CURRENCY = 101;
-    private static final int RESULT_LOAD_IMAGE_COUNTRY = 102;
-    private static final int RESULT_OK = 200;
     private Uri imageUriCurrency;
-    private Uri imageUriCountry;
     private Toast toast;
     private CurrencyModel currency;
 
@@ -102,11 +96,11 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     }
 
     private void loadData() {
-        if (currency != null){
+        if (currency != null) {
             mTextViewSymbolCurrency.setText("Symbol : " + currency.getSymbol());
             mTextViewNameCurrency.setText(currency.getName());
             mTextViewSymbolNative.setText("Symbol Native : " + currency.getSymbolNative());
-            mImageViewCountry.setScaleType(ImageView.ScaleType.FIT_XY);
+            mCode.setText("Code : " + currency.getId());
             setImageView(currency.getImageCountry(), mImageViewCountry);
             setImageView(currency.getImageCurrency(), mImageViewCurrency);
             if (!currency.getCountry().equals("") && !currency.getCountry().equals("-")) {
@@ -123,6 +117,10 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
                 dismissAllowingStateLoss();
             }
         });
+        toolbarAddCurrency.inflateMenu(R.menu.detail_currency_menu);
+        toolbarAddCurrency.getMenu().
+                findItem(R.id.save).
+                setOnMenuItemClickListener(this);
     }
 
     private void setStateDialog(View view) {
@@ -158,22 +156,13 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     }
 
     @OnClick({
-            R.id.imageAddCurrency,
-            R.id.btnCancelAddCurrency,
-            R.id.btnOkAddCurrency
+            R.id.imageAddCurrency
     })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imageAddCurrency:
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE_CURRENCY);
-                break;
-            case R.id.btnOkAddCurrency:
-                saveDataCurrency();
-                break;
-            case R.id.btnCancelAddCurrency:
-                dismissAllowingStateLoss();
-                getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                 break;
         }
     }
@@ -183,10 +172,11 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
 
         String imagePathCurrency = !String.valueOf(imageUriCurrency).equals("null") ?
                 imageUriCurrency.toString() : "-";
-        if (imagePathCurrency.equals("-")){
+        if (imagePathCurrency.equals("-")) {
             imagePathCurrency = currency.getImageCurrency();
         }
         mPresenter.saveDataCurrencyToDataBase(
+                currency.getId(),
                 currency.getSymbol(),
                 currency.getName(),
                 countryName,
@@ -196,12 +186,12 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
         );
     }
 
-    public String checkNullable(EditText editText, String string) {
-        String result = !editText.getText().toString().equals("null") &&
-                !editText.getText().toString().equals("") &&
-                !editText.getText().toString().equals(null) &&
-                editText != null ?
-                editText.getText().toString() : string;
+    public String checkNullable(TextView text, String string) {
+        String result = !text.getText().toString().equals("null") &&
+                !text.getText().toString().equals("") &&
+                !text.getText().toString().equals(null) &&
+                text != null ?
+                text.getText().toString() : string;
         return result;
     }
 
@@ -213,7 +203,7 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
                 if (null != data) {
                     imageUriCurrency = data.getData();
                     mImageViewCurrency.setScaleType(ImageView.ScaleType.FIT_XY);
-                    setImageView(imageUriCurrency, mImageViewCurrency);
+                    setImageView(imageUriCurrency.toString(), mImageViewCurrency);
                 }
                 break;
 
@@ -222,14 +212,8 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
         }
     }
 
-    private void setImageView(Uri imageUri, AppCompatImageView imageView) {
-        Glide.with(context)
-                .load(imageUri)
-                .error(R.drawable.ic_broken_image_grey_24dp)
-                .into(imageView);
-    }
-
     private void setImageView(String imageUri, AppCompatImageView imageView) {
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Glide.with(context)
                 .load(imageUri)
                 .error(R.drawable.ic_broken_image_grey_24dp)
@@ -250,14 +234,6 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
     @Override
     public void onResume() {
         super.onResume();
-        boolean isBottom = ((BottomSheetBehavior) behavior).getState() == BottomSheetBehavior.STATE_COLLAPSED;
-        if (!isBottom) {
-            btnCancelAddCurrency.setVisibility(View.GONE);
-            btnOkAddCurrency.setVisibility(View.GONE);
-        } else {
-            btnOkAddCurrency.setVisibility(View.VISIBLE);
-            btnCancelAddCurrency.setVisibility(View.VISIBLE);
-        }
     }
 
     public void setCurrency(CurrencyModel currency) {
@@ -266,5 +242,11 @@ public class DetailCurrencyFragment extends BottomSheetDialogFragment implements
 
     public void setContext(Context context) {
         this.context = context;
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        saveDataCurrency();
+        return false;
     }
 }

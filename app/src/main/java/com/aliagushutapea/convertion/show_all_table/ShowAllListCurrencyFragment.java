@@ -11,6 +11,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -35,7 +36,8 @@ import butterknife.ButterKnife;
  */
 
 public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment implements ShowAllListCurrencyFragmentContract.View,
-        AdapterCurrencyExchange.ListenerAdapterCurrencyExchange {
+        AdapterCurrencyExchange.ListenerAdapterCurrencyExchange,
+        SearchView.OnQueryTextListener {
 
     private Context context;
     @Inject
@@ -47,11 +49,13 @@ public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment imple
     RecyclerView recyclerViewListCurrency;
     @BindView(R.id.default_toolbar)
     Toolbar toolbarShowAllListCurrency;
+    SearchView searchView;
     private static final String TAG = ShowAllListCurrencyFragment.class.getSimpleName();
 
     private AdapterCurrencyExchange mAdapterCurrencyExchange;
     private View mView;
     private String filter;
+    private DividerItemDecoration dividerItemDecoration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,19 +83,22 @@ public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment imple
 
     private void setToolbar() {
         toolbarShowAllListCurrency.setNavigationIcon(R.drawable.ic_clear_white_24dp);
-        toolbarShowAllListCurrency.setNavigationOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dismissAllowingStateLoss();
-                    }
-                }
-        );
+        toolbarShowAllListCurrency.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismissAllowingStateLoss();
+            }
+        });
+        toolbarShowAllListCurrency.inflateMenu(R.menu.show_all_list_currency_fragment_menu);
+        searchView = (SearchView) toolbarShowAllListCurrency.getMenu()
+                .findItem(R.id.search_currency)
+                .getActionView();
+        searchView.setOnQueryTextListener(this);
     }
 
     private void setLayout() {
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) ((View) view.getParent()).getLayoutParams();
-        layoutParams.setMargins(100, 10, 100, 10);
+        layoutParams.setMargins(10, 10, 10, 10);
         final CoordinatorLayout.Behavior behavior = layoutParams.getBehavior();
         assert behavior != null;
         ((BottomSheetBehavior) behavior).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -126,7 +133,7 @@ public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment imple
 
     @Override
     public void setAdapterCurrency(List<CurrencyModel> currencyModelList, List<Integer> listType) {
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+        dividerItemDecoration = new DividerItemDecoration(
                 getContext(),
                 DividerItemDecoration.VERTICAL
         );
@@ -137,6 +144,11 @@ public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment imple
         recyclerViewListCurrency.setHasFixedSize(true);
         recyclerViewListCurrency.addItemDecoration(dividerItemDecoration);
         recyclerViewListCurrency.setAdapter(mAdapterCurrencyExchange);
+    }
+
+    @Override
+    public void refreshAdapter(List<CurrencyModel> currencyModelList, List<Integer> listType) {
+        mAdapterCurrencyExchange.refresh(currencyModelList, listType);
     }
 
     @Override
@@ -157,4 +169,16 @@ public class ShowAllListCurrencyFragment extends BottomSheetDialogFragment imple
     public void setFilter(String filter) {
         this.filter = filter;
     }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        mPresenter.querySearch(newText);
+        return false;
+    }
+
 }

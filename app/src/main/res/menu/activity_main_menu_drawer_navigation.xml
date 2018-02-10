@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
+<!--    <item
         android:id="@+id/menu_navigation_drawer_money"
         android:icon="@drawable/ic_attach_money_grey_24dp"
         android:title="@string/money_changer" />
@@ -13,10 +13,10 @@
     <item
         android:id="@+id/menu_navigation_drawer_add_table"
         android:icon="@drawable/ic_add_circle_outline_black_24dp"
-        android:title="@string/add_table"/>
+        android:title="@string/add_table"/>-->
 
     <item
-        android:id="@+id/menu_navigation_drawer_show_all_table"
-        android:icon="@drawable/ic_attach_money_greys_24dp"
+        android:id="@+id/menu_navigation_drawer_show_all_currency"
+        android:icon="@drawable/ic_euro_symbol_grey_24dp"
         android:title="@string/show_all_currency"/>
 </menu>

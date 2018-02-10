@@ -14,6 +14,8 @@ public interface ShowAllListCurrencyFragmentContract {
     interface View extends BaseView{
 
         void setAdapterCurrency(List<CurrencyModel> currencyModelList, List<Integer> listType);
+
+        void refreshAdapter(List<CurrencyModel> currencyModelList, List<Integer> listType);
     }
 
     interface Presenter extends BasePresenter{
@@ -21,5 +23,7 @@ public interface ShowAllListCurrencyFragmentContract {
         void loadListCurrency();
 
         void saveCurrencyModelToDatabase(CurrencyModel currencyModel, String filter);
+
+        void querySearch(String newText);
     }
 }

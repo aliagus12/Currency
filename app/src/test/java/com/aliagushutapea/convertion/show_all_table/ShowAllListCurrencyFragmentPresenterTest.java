@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
 import com.aliagushutapea.convertion.model.CurrencyModel;
+import com.aliagushutapea.convertion.utils.CurrencyUtils;
 import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
@@ -27,17 +28,20 @@ public class ShowAllListCurrencyFragmentPresenterTest {
     DatabaseManagerHelper databaseManagerHelper;
     Context context;
     CurrencyModel currencyModel;
+    CurrencyUtils currencyUtils;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         context = Mockito.mock(Context.class);
         currencyModel = new CurrencyModel();
+        currencyUtils = new CurrencyUtils(instance, context);
         databaseManagerHelper = Mockito.mock(DatabaseManagerHelper.class);
         view = Mockito.mock(ShowAllListCurrencyFragmentContract.View.class);
         mPresenter = new ShowAllListCurrencyFragmentPresenter(
                 view,
-                databaseManagerHelper
+                databaseManagerHelper,
+                currencyUtils
         );
     }
 

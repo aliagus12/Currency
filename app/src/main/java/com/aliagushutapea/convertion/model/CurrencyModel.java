@@ -13,6 +13,8 @@ public class CurrencyModel {
     String mImageCurrency;
     String keyConfiguration;
     String valueConfiguration;
+    String mId;
+    String mResult;
 
     public String getKeyConfiguration() {
         return keyConfiguration;
@@ -76,5 +78,21 @@ public class CurrencyModel {
 
     public void setImageCurrency(String mImageCurrency) {
         this.mImageCurrency = mImageCurrency;
+    }
+
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String mId) {
+        this.mId = mId;
+    }
+
+    public String getResult() {
+        return mResult;
+    }
+
+    public void setResult(String mResult) {
+        this.mResult = mResult;
     }
 }

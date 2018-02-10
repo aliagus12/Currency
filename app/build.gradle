@@ -21,6 +21,21 @@ android {
     dataBinding {
         enabled true
     }
+    /**created by ali agus untuk pengganti resources*/
+    sourceSets {
+        test {
+            resources.srcDirs += ['sampledata']
+        }
+        androidTest {
+            resources.srcDirs += ['sampledata']
+        }
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    configurations {
+        shadow
+    }
 }
 
 dependencies {
@@ -36,6 +51,7 @@ dependencies {
     compile 'com.android.support:preference-v7:25.3.1'
     compile 'com.android.support:mediarouter-v7:25.3.1'
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test:rules:0.5') {
         exclude module: 'support-annotations'
@@ -77,4 +93,12 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
 
     compile 'com.github.bumptech.glide:glide:3.8.0'
+
+    compile 'com.github.d-max:spots-dialog:0.4@aar'
+
+    compile 'me.grantland:autofittextview:0.2.+'
+
+    /* RxJava bindings APIs for Android's UI Widgets */
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    compile 'com.jakewharton.rxbinding2:rxbinding-design:2.0.0'
 }

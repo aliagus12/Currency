@@ -17,11 +17,11 @@
             android:id="@+id/default_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#910fde65"
-            app:popupTheme="@style/AppThemeToolbar"
-            app:subtitleTextAppearance="@style/ToolbarSubtitleAppearance"
-            app:theme="@style/AppThemeToolbar"
-            app:titleTextAppearance="@style/ToolbarTitleAppearance"
+            android:background="#0cdaa0"
+            android:popupTheme="@style/AppThemeToolbar"
+            android:subtitleTextAppearance="@style/ToolbarSubtitleAppearance"
+            android:theme="@style/AppThemeToolbar"
+            android:titleTextAppearance="@style/ToolbarTitleAppearance"
             tools:targetApi="lollipop"
             android:onClick="@{(view) -> presenter.inspectDatabase()}"/>
     </RelativeLayout>
