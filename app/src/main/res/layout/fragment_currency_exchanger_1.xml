@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="propertyMoney"
+            type="com.aliagushutapea.convertion.currency_exchange.PropertyMoney" />
+
+        <variable
+            name="presenter"
+            type="com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentPresenter" />
+
+        <variable
+            name="fragment"
+            type="com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragment"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#fff">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutChoosingCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearForTarget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/imageMoneyTarget"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_broken_image_grey_24dp"
+                        android:background="@drawable/background_image_view"
+                        android:onClick="@{presenter::showListCurrency}"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/imageViewCountryTarget"
+                                android:layout_weight="2"
+                                android:src="@drawable/ic_broken_image_grey_24dp"
+                                android:background="@drawable/background_image_view"
+                                />
+
+                            <TextView
+                                android:id="@+id/nameCurrencyTarget"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:text="Rp" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:gravity="center"
+                    android:hint="@string/example"
+                    android:inputType="number"
+                    android:background="@drawable/background_edit_text_rounded"
+                    android:id="@+id/edtTargetCurrency"
+                    />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:id="@+id/imageSwitch"
+                android:layout_weight="1"
+                android:src="@drawable/ic_swap_vert_grey_24dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/linearForValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <me.grantland.widget.AutofitTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:id="@+id/txtCurrencyResult"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textSize="17sp"
+                    android:hint="@string/example_result"
+                    android:background="@drawable/background_edit_text_rounded"
+                    /> <!-- maximum size -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            >
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/imageViewCountryResult"
+                                android:src="@drawable/ic_broken_image_grey_24dp"
+                                android:background="@drawable/background_image_view"
+                                android:layout_weight="2"
+                                />
+
+                            <TextView
+                                android:id="@+id/nameCurrencyResult"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:text="Rp" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/imageMoneyResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_broken_image_grey_24dp"
+                        android:background="@drawable/background_image_view"
+                        android:onClick="@{presenter::showListCurrency}"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

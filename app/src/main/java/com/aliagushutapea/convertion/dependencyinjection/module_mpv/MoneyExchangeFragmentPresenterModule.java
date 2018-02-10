@@ -1,6 +1,6 @@
 package com.aliagushutapea.convertion.dependencyinjection.module_mpv;
 
-import com.aliagushutapea.convertion.money_exchange.MoneyExchangeFragmentContract;
+import com.aliagushutapea.convertion.currency_exchange.CurrencyExchangeFragmentContract;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,14 +11,14 @@ import dagger.Provides;
 @Module
 public class MoneyExchangeFragmentPresenterModule {
 
-    MoneyExchangeFragmentContract.View view;
+    CurrencyExchangeFragmentContract.View view;
 
-    public MoneyExchangeFragmentPresenterModule(MoneyExchangeFragmentContract.View view) {
+    public MoneyExchangeFragmentPresenterModule(CurrencyExchangeFragmentContract.View view) {
         this.view = view;
     }
 
     @Provides
-    MoneyExchangeFragmentContract.View provideMoneyContractView(){
+    CurrencyExchangeFragmentContract.View provideMoneyContractView(){
         return view;
     }
 }

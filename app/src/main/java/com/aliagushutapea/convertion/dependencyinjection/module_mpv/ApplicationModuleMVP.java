@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
+import com.aliagushutapea.convertion.utils.CurrencyUtils;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,11 +18,13 @@ public class ApplicationModuleMVP {
     Context context;
     CurrencyModel currencyModel;
     DatabaseManagerHelper instance;
+    CurrencyUtils currencyUtils;
 
     public ApplicationModuleMVP(Context context) {
         this.context = context;
         currencyModel = new CurrencyModel();
         instance = DatabaseManagerHelper.getInstance(context);
+        currencyUtils = new CurrencyUtils(instance, context);
     }
 
     @Provides
@@ -37,6 +40,11 @@ public class ApplicationModuleMVP {
     @Provides
     DatabaseManagerHelper provideDatabaseManagerHelper(){
         return instance;
+    }
+
+    @Provides
+    CurrencyUtils provideCurrencyUtils(){
+        return currencyUtils;
     }
 
 }

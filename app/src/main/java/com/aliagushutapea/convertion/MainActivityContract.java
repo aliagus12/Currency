@@ -10,9 +10,12 @@ import com.aliagushutapea.convertion.base.BaseView;
 public interface MainActivityContract {
 
     interface View extends BaseView {
-
+        void toMainContentAndDissmisProgressDialog();
     }
 
     interface Presenter extends BasePresenter {
+        void insertDataToDatabase();
+
+        void insertDataCurrencyToDatabase() throws Exception;
     }
 }

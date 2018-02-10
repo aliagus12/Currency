@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aliagushutapea.convertion.model.CurrencyModel;
 import com.aliagushutapea.convertion.database_helper.DatabaseManagerHelper;
+import com.aliagushutapea.convertion.utils.SourceString;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 /**
@@ -49,8 +51,15 @@ public class MainContentActivityPresenterTest {
     }
 
     @Test
-    public void shouldShowFragmentAddCurrency() throws Exception {
-        mPresenter.addCurrency();
-        Mockito.verify(view).attachFragmentAddCurrency();
+    public void shouldInspecDatabase() throws Exception {
+        mPresenter.inspectDatabase();
+        Mockito.verify(view).inspecDatabase();
+    }
+
+    @Test
+    public void shoudSaveConfiguration() throws Exception {
+        mPresenter.saveConfiguration();
+        assertTrue(currencyModel.getValueConfiguration().equals("navigation"));
+        Mockito.verify(databaseManagerHelper).saveConfiguration(SourceString.CONFIGURATION_COLOMN, currencyModel);
     }
 }

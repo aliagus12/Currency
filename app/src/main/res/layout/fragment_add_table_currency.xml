@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/app_bar_drawer"
+        layout="@layout/default_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
 

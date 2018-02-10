@@ -10,6 +10,7 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class AddTableCurrencyFragment extends BottomSheetDialogFragment implemen
     ConstraintLayout coordinatorLayoutContainerFragmentAddTableCurrency;
     @BindView(R.id.edtTableName)
     AppCompatEditText edtTableName;
+    @BindView(R.id.default_toolbar)
+    Toolbar toolbarAddTable;
     private Toast toast;
 
 
@@ -59,6 +62,23 @@ public class AddTableCurrencyFragment extends BottomSheetDialogFragment implemen
         view = View.inflate(getContext(), R.layout.fragment_add_table_currency, null);
         ButterKnife.bind(this, view);
         dialog.setContentView(view);
+        setStateView(view);
+        setToolbar();
+    }
+
+    private void setToolbar() {
+        toolbarAddTable.setNavigationIcon(R.drawable.ic_clear_white_24dp);
+        toolbarAddTable.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dismissAllowingStateLoss();
+                    }
+                }
+        );
+    }
+
+    private void setStateView(View view) {
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) ((View) view.getParent()).getLayoutParams();
         layoutParams.setMargins(0, 10, 0, 0);
         final CoordinatorLayout.Behavior behavior = layoutParams.getBehavior();

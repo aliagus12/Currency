@@ -36,7 +36,7 @@
             app:layout_constraintBottom_toTopOf="parent"
             app:menu="@menu/botton_navigation_menu" />
 
-        <android.support.design.widget.FloatingActionButton
+        <!--<android.support.design.widget.FloatingActionButton
             android:id="@+id/addMoney"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -45,7 +45,7 @@
             android:onClick="@{(view) -> presenter.addCurrency()}"
             android:src="@drawable/ic_add_white_24dp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view_drawer"
-            app:layout_constraintRight_toLeftOf="parent" />
+            app:layout_constraintRight_toLeftOf="parent" />-->
 
     </android.support.constraint.ConstraintLayout>
 

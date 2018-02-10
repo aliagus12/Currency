@@ -16,7 +16,7 @@ import javax.inject.Singleton;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     //database version
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
     //database name
     public static final String DATABASE_NAME = "mc.db";
 
@@ -36,27 +36,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(KeyValueColomn.CREATE_TABLE_KV);
-        db.execSQL(CurrencyColomn.CREATE_TABLE_CURRENCY);
+        db.execSQL(ConfigurationColomn.CREATE_TABLE_CONFIGURATION);
+        /*db.execSQL(CurrencyColomn.CREATE_TABLE_CURRENCY);
         db.execSQL(CurrencyTargetColomn.CREATE_TABLE_CURRENCY_TARGET);
-        db.execSQL(CurrencyResultColomn.CREATE_TABLE_CURRENCY_RESULT);
+        db.execSQL(CurrencyResultColomn.CREATE_TABLE_CURRENCY_RESULT);*/
+        db.execSQL(AllCurrencyColomn.CREATE_TABLE_CURRENCY);
+        db.execSQL(TargetCurrencyColomn.CREATE_TABLE_TARGET);
+        db.execSQL(ResultCurrencyColomn.CREATE_TABLE_RESULT);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + KeyValueColomn.TABLE_KV);
-        db.execSQL("DROP TABLE IF EXISTS " + CurrencyColomn.TABLE_CURRENCY);
+        db.execSQL("DROP TABLE IF EXISTS " + ConfigurationColomn.TABLE_CONFIGURATION);
+        /*db.execSQL("DROP TABLE IF EXISTS " + CurrencyColomn.TABLE_CURRENCY);
         db.execSQL("DROP TABLE IF EXISTS " + CurrencyTargetColomn.TABLE_CURRENCY_TARGET);
-        db.execSQL("DROP TABLE IF EXISTS " + CurrencyResultColomn.TABLE_CURRENCY_RESULT);
+        db.execSQL("DROP TABLE IF EXISTS " + CurrencyResultColomn.TABLE_CURRENCY_RESULT);*/
+        db.execSQL("DROP TABLE IF EXISTS " + AllCurrencyColomn.TABLE_ALL_CURRENCY);
+        db.execSQL("DROP TABLE IF EXISTS " + TargetCurrencyColomn.TABLE_TARGET);
+        db.execSQL("DROP TABLE IF EXISTS " + ResultCurrencyColomn.TABLE_RESULT);
         onCreate(db);
     }
 
-    public static final class KeyValueColomn implements BaseColumns {
-        public static final String TABLE_KV = "kv";
+    public static final class ConfigurationColomn implements BaseColumns {
+        public static final String TABLE_CONFIGURATION = "configuration";
         public static final String COL_KEY = "key";
         public static final String COL_VALUE = "value";
-        public static final String CREATE_TABLE_KV = "CREATE TABLE IF NOT EXISTS "
-                + TABLE_KV +
+        public static final String CREATE_TABLE_CONFIGURATION = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_CONFIGURATION +
                 "(" + COL_KEY + " TEXT, " + COL_VALUE + " TEXT)";
     }
 
@@ -82,42 +88,103 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_CURRENCY_IMAGE_PATH + " VARCHAR(100)" + ")";
     }
 
-    public static final class CurrencyTargetColomn implements BaseColumns {
-        public static final String TABLE_CURRENCY_TARGET = "currencyTarget";
-        public static final String COL_ID = "idTarget";
-        public static final String COL_CURRENCY_ID = "currencyId";
-        public static final String COL_CURRENCY_NAME = "currencyName";
-        public static final String COL_COUNTRY_NAME = "countryName";
-        public static final String COL_CURRENCY_COUNTRY_IMAGE_PATH = "countryImagePath";
-        public static final String COL_CURRENCY_IMAGE_PATH = "currencyImagePath";
+    public static final class AllCurrencyColomn implements BaseColumns {
+        public static final String TABLE_ALL_CURRENCY = "All_Currency";
+        public static final String COL_NO = "No";
+        public static final String COL_ID = "Id";
+        public static final String COL_SYMBOL = "Symbol";
+        public static final String COL_NAME = "Name";
+        public static final String COL_COUNTRY = "Country";
+        public static final String COL_SYMBOL_NATIVE = "Symbol_Native";
+        public static final String COL_IMAGE_COUNTRY = "Image_Country";
+        public static final String COL_IMAGE_CURRENCY = "Image_Currency";
 
-        public static final String CREATE_TABLE_CURRENCY_TARGET = "CREATE TABLE IF NOT EXISTS "
-                + TABLE_CURRENCY_TARGET +
-                "(" + COL_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-                + COL_CURRENCY_ID + " VARCHAR(10), "
-                + COL_CURRENCY_NAME + " VARCHAR(15), "
-                + COL_COUNTRY_NAME + " VARCHAR(25), "
-                + COL_CURRENCY_COUNTRY_IMAGE_PATH + " VARCHAR(100), "
-                + COL_CURRENCY_IMAGE_PATH + " VARCHAR(100)" + ")";
+        public static final String CREATE_TABLE_CURRENCY = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_ALL_CURRENCY +
+                "("
+                + COL_NO +
+                " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                + COL_ID +
+                " VARCHAR(10), "
+                + COL_SYMBOL +
+                " VARCHAR(20), "
+                + COL_NAME +
+                " VARCHAR(25), "
+                + COL_COUNTRY +
+                " VARCHAR(25), "
+                + COL_SYMBOL_NATIVE +
+                " VARCHAR(10), "
+                + COL_IMAGE_COUNTRY +
+                " VARCHAR(150), "
+                + COL_IMAGE_CURRENCY +
+                " VARCHAR(150)"
+                + ")";
     }
 
-    public static final class CurrencyResultColomn implements BaseColumns {
-        public static final String TABLE_CURRENCY_RESULT = "currencyResult";
-        public static final String COL_ID = "idResult";
-        public static final String COL_CURRENCY_ID = "currencyId";
-        public static final String COL_CURRENCY_NAME = "currencyName";
-        public static final String COL_COUNTRY_NAME = "countryName";
-        public static final String COL_CURRENCY_COUNTRY_IMAGE_PATH = "countryImagePath";
-        public static final String COL_CURRENCY_IMAGE_PATH = "currencyImagePath";
+    public static final class TargetCurrencyColomn implements BaseColumns {
+        public static final String TABLE_TARGET = "Target";
+        public static final String COL_NO = "No";
+        public static final String COL_ID = "Id";
+        public static final String COL_SYMBOL = "Symbol";
+        public static final String COL_NAME = "Name";
+        public static final String COL_COUNTRY = "Country";
+        public static final String COL_SYMBOL_NATIVE = "Symbol_Native";
+        public static final String COL_IMAGE_COUNTRY = "Image_Country";
+        public static final String COL_IMAGE_CURRENCY = "Image_Currency";
 
-        public static final String CREATE_TABLE_CURRENCY_RESULT = "CREATE TABLE IF NOT EXISTS "
-                + TABLE_CURRENCY_RESULT +
-                "(" + COL_ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
-                + COL_CURRENCY_ID + " VARCHAR(10), "
-                + COL_CURRENCY_NAME + " VARCHAR(15), "
-                + COL_COUNTRY_NAME + " VARCHAR(25), "
-                + COL_CURRENCY_COUNTRY_IMAGE_PATH + " VARCHAR(100), "
-                + COL_CURRENCY_IMAGE_PATH + " VARCHAR(100)" + ")";
+        public static final String CREATE_TABLE_TARGET = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_TARGET +
+                "("
+                + COL_NO +
+                " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                + COL_ID +
+                " VARCHAR(10), "
+                + COL_SYMBOL +
+                " VARCHAR(20), "
+                + COL_NAME +
+                " VARCHAR(25), "
+                + COL_COUNTRY +
+                " VARCHAR(25), "
+                + COL_SYMBOL_NATIVE +
+                " VARCHAR(10), "
+                + COL_IMAGE_COUNTRY +
+                " VARCHAR(150), "
+                + COL_IMAGE_CURRENCY +
+                " VARCHAR(150)"
+                + ")";
+    }
+
+    public static final class ResultCurrencyColomn implements BaseColumns {
+        public static final String TABLE_RESULT = "Result";
+        public static final String COL_NO = "No";
+        public static final String COL_ID = "Id";
+        public static final String COL_SYMBOL = "Symbol";
+        public static final String COL_NAME = "Name";
+        public static final String COL_COUNTRY = "Country";
+        public static final String COL_SYMBOL_NATIVE = "Symbol_Native";
+        public static final String COL_IMAGE_COUNTRY = "Image_Country";
+        public static final String COL_IMAGE_CURRENCY = "Image_Currency";
+
+        public static final String CREATE_TABLE_RESULT = "CREATE TABLE IF NOT EXISTS "
+                + TABLE_RESULT +
+                "("
+                + COL_NO +
+                " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "
+                + COL_ID +
+                " VARCHAR(10), "
+                + COL_SYMBOL +
+                " VARCHAR(20), "
+                + COL_NAME +
+                " VARCHAR(25), "
+                + COL_COUNTRY +
+                " VARCHAR(25), "
+                + COL_SYMBOL_NATIVE +
+                " VARCHAR(10), "
+                + COL_IMAGE_COUNTRY +
+                " VARCHAR(150), "
+                + COL_IMAGE_CURRENCY +
+                " VARCHAR(150)"
+                + ")";
     }
 
     public Boolean isKeyExists(String tableName) {

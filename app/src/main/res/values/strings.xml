@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Convertion</string>
+    <string name="app_name">Currency</string>
     <string name="drawer_open">Navigation open drawer</string>
     <string name="drawer_close">Navigation close drawer</string>
-    <string name="money_changer">Money</string>
+    <string name="currency">Currency</string>
     <string name="temperature_changer">Temperatur</string>
     <string name="money_exchange">Money Exchange</string>
     <string name="temperature_exchange">Temperature Exchange</string>
@@ -15,4 +15,8 @@
     <string name="show_all_table">Show All Table</string>
     <string name="example">eg. 123</string>
     <string name="example_result">eg. Rp. 1000.000, 00</string>
+    <string name="show_all_currency">Show All Currency</string>
+    <string name="save">Save</string>
+    <string name="searching">Searching</string>
+    <string name="please_wait">Please wait...</string>
 </resources>
